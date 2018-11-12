@@ -18,6 +18,7 @@
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/dao/impl/ClusterDaoImpl.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/dao/ISensorDao.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/service/ISmartNodeService.java
+/Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/dto/SensorRowMapper.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/dao/impl/SensorReadingDataDaoImpl.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/service/IClusterService.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/service/ISensorReadingDataService.java
