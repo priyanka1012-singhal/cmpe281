@@ -12,6 +12,7 @@
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/config/WebMvcConfig.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/dao/impl/SensorDaoImpl.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/service/impl/SensorServiceImpl.java
+/Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/controller/AppController.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/service/impl/ClusterServiceImpl.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/controller/ClusterController.java
 /Users/priyankasinghal/Desktop/CMPE281/project/src/main/java/smartstreet/config/WebInitializer.java

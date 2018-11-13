@@ -24,5 +24,6 @@ smartstreet/dto/SensorRowMapper.class
 smartstreet/service/ISensorReadingDataService.class
 smartstreet/dao/impl/SmartNodeDaoImpl.class
 smartstreet/controller/SensorController.class
+smartstreet/controller/AppController.class
 smartstreet/service/IClusterService.class
 smartstreet/controller/ClusterController.class

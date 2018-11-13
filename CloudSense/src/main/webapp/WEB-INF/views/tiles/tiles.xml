@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
+ 
+<tiles-definitions>  
+  
+   <!-- Base Definition -->
+   <definition name="base-definition"
+       template="/WEB-INF/views/jsp/defaultLayout.jsp">  
+       <put-attribute name="title" value="" />  
+       <put-attribute name="header" value="" />  
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultSideBar.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
+   </definition>  
+  
+   <!-- Iot Manager Dashboard Page -->
+   <definition name="iotmanagerdashboard" extends="base-definition">  
+       <put-attribute name="title" value="Dashboard" />  
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/iotmanagerdashboard.jsp" />  
+   </definition> 
+   
+    <!-- Add Sensor for IOT Manager -->
+   <definition name="addsensor" extends="base-definition">  
+       <put-attribute name="title" value="Add Sensor" />  
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/addsensor.jsp" />  
+   </definition>  
+   
+    <!-- View Sensor for IOT Manager -->
+   <definition name="viewsensor" extends="base-definition">  
+       <put-attribute name="title" value="View Sensor" />  
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/viewsensor.jsp" />  
+   </definition>  
+   
+   <!-- Sensor Station Dashboard Page -->
+   <definition name="sensorstationdashboard" extends="base-definition">  
+       <put-attribute name="title" value="Dashboard" />  
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultSensorStationHeader.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/sensorstationdashboard.jsp" />  
+   </definition>
+ 
+</tiles-definitions>

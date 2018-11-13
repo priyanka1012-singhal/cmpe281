@@ -14,9 +14,13 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
+import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
 import com.mongodb.MongoClient;
  
@@ -29,17 +33,50 @@ public class WebMvcConfig implements WebMvcConfigurer {
     * View Resolver
     * @return InternalResourceViewResolver
     */
-   @Bean
+  /* @Bean
    public InternalResourceViewResolver resolver() {
       InternalResourceViewResolver resolver = new InternalResourceViewResolver();
       resolver.setViewClass(JstlView.class);
-      resolver.setPrefix("/WEB-INF/views/");
+      resolver.setPrefix("/WEB-INF/views/jsp/");
       resolver.setSuffix(".jsp");
       return resolver;
+   }*/
+	
+	 /**
+	    * Configure TilesConfigurer.
+	    */
+	   @Bean
+	   public TilesConfigurer tilesConfigurer(){
+	       TilesConfigurer tilesConfigurer = new TilesConfigurer();
+	       tilesConfigurer.setDefinitions(new String[] {"/WEB-INF/views/**/tiles.xml"});
+	       tilesConfigurer.setCheckRefresh(true);
+	       return tilesConfigurer;
+	   }
+	
+	/**
+     * Configure ViewResolvers to deliver preferred views.
+     */
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        TilesViewResolver viewResolver = new TilesViewResolver();
+        registry.viewResolver(viewResolver);
+    }
+   
+   @Override
+   public void addResourceHandlers(ResourceHandlerRegistry registry) {
+
+    // Register resource handler for CSS and JS
+      registry.addResourceHandler("/bootstrap/**").addResourceLocations("/WEB-INF/views/jsp/bootstrap/");
+   // Register resource handler for dist
+      registry.addResourceHandler("/dist/**").addResourceLocations("/WEB-INF/views/jsp/dist/");
+   // Register resource handler for plugins
+      registry.addResourceHandler("/plugins/**").addResourceLocations("/WEB-INF/views/jsp/plugins/");
    }
    
+  
+   
    /**
-    * Jackson
+    * Jackson for Json converter
     */
    public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
        Jackson2ObjectMapperBuilder builder = new Jackson2ObjectMapperBuilder();
