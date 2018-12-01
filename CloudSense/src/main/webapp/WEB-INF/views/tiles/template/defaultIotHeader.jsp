@@ -1,5 +1,5 @@
 
-      
+      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
       <header class="main-header">
         <!-- Logo -->
         <a href="index2.html" class="logo"><b>IOT </b>Manager</a>
@@ -127,13 +127,13 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <img src="dist/img/avatar.png" class="user-image" alt="User Image"/>
+                  <img src='<c:url value="/dist/img/avatar.png"/>' class="user-image" alt="User Image"/>
                   <span class="hidden-xs">XYZ</span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    <img src="dist/img/avatar.png" class="img-circle" alt="User Image" />
+                    <img src='<c:url value="/dist/img/avatar.png"/>' class="img-circle" alt="User Image" />
                     <p>
                       XYZ
                       <small>Member since Nov. 2018</small>

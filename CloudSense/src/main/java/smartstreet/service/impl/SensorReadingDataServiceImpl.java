@@ -5,18 +5,18 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import smartstreet.dao.ISensorReadingDataDao;
-import smartstreet.model.SensorReadingData;
+import smartstreet.dao.impl.SensorDataRepository;
+import smartstreet.model.SensorData;
 import smartstreet.service.ISensorReadingDataService;
 
 @Service
 public class SensorReadingDataServiceImpl implements ISensorReadingDataService {
 	
 	@Autowired
-	public ISensorReadingDataDao sensorReadingDataDao;
+    private SensorDataRepository repository;
 	
-	public List<SensorReadingData> getReadingData(String sensorId) {
-		return sensorReadingDataDao.getReadingData(sensorId);
+	public List<SensorData> getReadingData( ) {
+		return repository.getReadingData();
 	}
 
 }

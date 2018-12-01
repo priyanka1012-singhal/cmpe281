@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<button type="button" id="addsensor" class="btn btn-primary" data-toggle="modal" data-target="#contact-modal" onclick="ajaxGet()">Add Sensor</button>
+	<div id="contact-modal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<a class="close" data-dismiss="modal">×</a>
+				<h3>Add Sensors</h3>
+			</div>
+			<form id="addsensorForm" role="form">
+				<div class="modal-body">				
+							
+				</div>
+				<div class="modal-footer">					
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-success" id="submit">
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+      
+<script>
+
+    // DO GET
+    $("#addsensor").click(function () {
+    			$.ajax({
+    				type : "GET",
+    				url : window.location + "/node/1/getunmappedsensors",
+    				success: function(result){
+    					if(result.status == "Done"){
+    						alert(result);
+    						console.log("Success: ", result);
+    					}else{
+    						alert('sorry');
+    						console.log("Fail: ", result);
+    					}
+    				},
+    				error : function(e) {
+    					console.log("ERROR: ", e);
+    				}
+    			});	
+    });
+</script>
+
+
+</body>
+</html>

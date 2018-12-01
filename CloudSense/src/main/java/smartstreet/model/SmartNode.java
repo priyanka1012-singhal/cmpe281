@@ -1,12 +1,17 @@
 package smartstreet.model;
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Smart Node Model class
  * @author priyankasinghal
  *
  */
 public class SmartNode {
-	private String id;
+	@Id
+	private int id;
 	private String nodeName ;
 	private String nodeDesc ;
 	private int nodeStatus  ;
@@ -18,13 +23,18 @@ public class SmartNode {
 	private String nodeCountry ;
 	private String nodeZip ;
 	private String installedBy ;
+	private List<Integer> sensorList;
+	private List<Sensor> sensors;
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date installationDate  ;
 	private String lastMaintainedBy ;
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date lastMaintainedDate ;
-	public String getId() {
+	private int sensorIdCount;
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getNodeName() {
@@ -111,6 +121,25 @@ public class SmartNode {
 	public void setLastMaintainedDate(Date lastMaintainedDate) {
 		this.lastMaintainedDate = lastMaintainedDate;
 	}
+	public int getSensorIdCount() {
+		return sensorIdCount;
+	}
+	public void setSensorIdCount(int sensorIdCount) {
+		this.sensorIdCount = sensorIdCount;
+	}
+	public List<Sensor> getSensors() {
+		return sensors;
+	}
+	public void setSensors(List<Sensor> sensors) {
+		this.sensors = sensors;
+	}
+	public List<Integer> getSensorList() {
+		return sensorList;
+	}
+	public void setSensorList(List<Integer> sensorList) {
+		this.sensorList = sensorList;
+	}
+	
 	
 	
 

@@ -1,8 +1,9 @@
 package smartstreet.service;
 
 import java.util.List;
-import smartstreet.model.SensorReadingData;
+
+import smartstreet.model.SensorData;
 
 public interface ISensorReadingDataService {
-	public List<SensorReadingData> getReadingData(String sensorId);
+	public List<SensorData> getReadingData( );
 }

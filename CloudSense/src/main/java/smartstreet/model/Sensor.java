@@ -1,6 +1,9 @@
 package smartstreet.model;
 
-import java.sql.Date;
+import java.util.Date;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Sensor Model class
  * @author priyankasinghal
@@ -8,8 +11,10 @@ import java.sql.Date;
  */
 public class Sensor {
 	
-	private String id;
+	@Id
+	private int id;
 	private String deviceid;
+	private String deviceType;
 	private String sensorName ;
 	private String sensorDesc ;
 	private int sensorStatus  ;
@@ -27,14 +32,25 @@ public class Sensor {
 	private String sensorState ;
 	private String sensorCountry ;
 	private String sensorZip ;
-	private String installedBy ;
+	private int installedBy ;
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date installationDate  ;
-	private String lastMaintainedBy ;
+	private int lastMaintainedBy ;
+	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date lastMaintainedDate ;
-	public String getId() {
+	
+	
+	
+	public String getDeviceType() {
+		return deviceType;
+	}
+	public void setDeviceType(String deviceType) {
+		this.deviceType = deviceType;
+	}
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getDeviceid() {
@@ -145,10 +161,12 @@ public class Sensor {
 	public void setSensorZip(String sensorZip) {
 		this.sensorZip = sensorZip;
 	}
-	public String getInstalledBy() {
+	public int getInstalledBy() {
 		return installedBy;
 	}
-	public void setInstalledBy(String installedBy) {
+	public void setInstalledBy(int installedBy) {
+		if(installedBy == 0)
+			installedBy = 1;
 		this.installedBy = installedBy;
 	}
 	public Date getInstallationDate() {
@@ -157,10 +175,12 @@ public class Sensor {
 	public void setInstallationDate(Date installationDate) {
 		this.installationDate = installationDate;
 	}
-	public String getLastMaintainedBy() {
+	public int getLastMaintainedBy() {
 		return lastMaintainedBy;
 	}
-	public void setLastMaintainedBy(String lastMaintainedBy) {
+	public void setLastMaintainedBy(int lastMaintainedBy) {
+		if(lastMaintainedBy == 0)
+			lastMaintainedBy = 1;
 		this.lastMaintainedBy = lastMaintainedBy;
 	}
 	public Date getLastMaintainedDate() {

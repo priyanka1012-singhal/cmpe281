@@ -28,8 +28,39 @@ public class SensorDaoImpl implements ISensorDao{
 	 * @param sensor
 	 */
 	public void addSensor(Sensor sensor) {
-		   String sql = "INSERT INTO sensor (sensor_id, sensor_name, sensor_status) values (?, ?, ?)";
-		   jdbcTemplate.update(sql, sensor.getId(), sensor.getSensorName(),sensor.getSensorStatus());
+		   String sql = "INSERT INTO sensor (sensor_name, "
+		   		+ "device_id,"
+		   		+ "sensor_status,"
+		   		+ "device_type,"
+		   		+ "sensor_type,"
+		   		+ "sensor_latitude,"
+		   		+ "sensor_longitude,"
+		   		+ "sensor_address,"
+		   		+ "sensor_city,"
+		   		+ "sensor_state,"
+		   		+ "sensor_zip,"
+		   		+ "installed_by,"
+		   		+ "installation_date,"
+		   		+ "last_maintained_by,"
+		   		+ "last_maintained_date"
+		   		+ ") values (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
+		   jdbcTemplate.update(sql,  
+				   sensor.getSensorName(),
+				   sensor.getDeviceid(),
+				   sensor.getSensorStatus(),
+				   sensor.getDeviceType(),
+				   sensor.getSensorType(),
+				   sensor.getSensorLatitude(),
+				   sensor.getSensorLongitude(),
+				   sensor.getSensorAddress(),
+				   sensor.getSensorCity(),
+				   sensor.getSensorState(),
+				   sensor.getSensorZip(),
+				   sensor.getInstalledBy(),
+				   sensor.getInstallationDate(),
+				   sensor.getLastMaintainedBy(),
+				   sensor.getLastMaintainedDate()
+				   );
 	}
 	
 	/**
@@ -37,7 +68,22 @@ public class SensorDaoImpl implements ISensorDao{
 	 * @return List of sensors
 	 */
 	public List<Sensor> getAllSensors() {
-		   String sql = "SELECT sensor_id, sensor_name, sensor_status FROM sensor";
+		   String sql = "SELECT sensor_id, sensor_name, "
+				   		+ "device_id,"
+				   		+ "sensor_status,"
+				   		+ "device_type,"
+				   		+ "sensor_type,"
+				   		+ "sensor_latitude,"
+				   		+ "sensor_longitude,"
+				   		+ "sensor_address,"
+				   		+ "sensor_city,"
+				   		+ "sensor_state,"
+				   		+ "sensor_zip,"
+				   		+ "installed_by,"
+				   		+ "installation_date,"
+				   		+ "last_maintained_by,"
+				   		+ "last_maintained_date"
+		   		+ " FROM sensor";
 		   RowMapper<Sensor> rowMapper = new SensorRowMapper();		
 		   return this.jdbcTemplate.query(sql, rowMapper);
 	}

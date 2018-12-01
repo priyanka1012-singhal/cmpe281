@@ -1,10 +1,10 @@
-      <!-- Right side column. Contains the navbar and content of the page -->
+     <!-- Right side column. Contains the navbar and content of the page -->
       <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
             Dashboard
-            <small>Control panel</small>
+            
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -13,192 +13,40 @@
         </section>
 
         <!-- Main content -->
-        <section class="content">
-          <!-- Small boxes (Stat box) -->
+        <section class="content connectedSortable">
           <div class="row">
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-aqua">
-                <div class="inner">
-                  <h3>150</h3>
-                  <p>New Orders</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-green">
-                <div class="inner">
-                  <h3>10<sup style="font-size: 20px">%</sup></h3>
-                  <p>Less Energy Usage</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-yellow">
-                <div class="inner">
-                  <h3>4</h3>
-                  <p>Low Battery Sensors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-              <!-- small box -->
-              <div class="small-box bg-red">
-                <div class="inner">
-                  <h3>10</h3>
-                  <p>Inactive Sensors</p>
-                </div>
-                <div class="icon">
-                  <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-          </div><!-- /.row -->
+            <div class="col-md-10">
+              <div class="box box-default">
+                <div class="box-header with-border">
+                  <i class="fa fa-warning"></i>
+                  <h3 class="box-title">Notifications & Alerts</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-ban"></i> 10 Out of Service Sensors</h4>
+                  </div>
+                  <div class="alert alert-info alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-info"></i> 14 Inactive sensors</h4>
+                  </div>
+                  <div class="alert alert-warning alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="icon fa fa-warning"></i> 4 Out of battery Sensors</h4>
+                  </div>
+                  <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4>	<i class="icon fa fa-check"></i> 10% Less Energy Usage since last month</h4>
+                  </div>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col -->
+        </div> <!-- /.row -->
+         
           <!-- Main row -->
           <div class="row">
             <!-- Left col -->
-            <section class="col-lg-7 connectedSortable">
-              <!-- Custom tabs (Charts with tabs)-->
-              <div class="nav-tabs-custom">
-                <!-- Tabs within a box -->
-                <ul class="nav nav-tabs pull-right">
-                  <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
-                  <li><a href="#sales-chart" data-toggle="tab">Donut</a></li>
-                  <li class="pull-left header"><i class="fa fa-inbox"></i> Temperature</li>
-                </ul>
-                <div class="tab-content no-padding">
-                  <!-- Morris chart - Temperature -->
-                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 300px;"></div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;"></div>
-                </div>
-              </div><!-- /.nav-tabs-custom -->
-
-              <!-- TO DO List -->
-              <div class="box box-primary">
-                <div class="box-header">
-                  <i class="ion ion-clipboard"></i>
-                  <h3 class="box-title">To Do List</h3>
-                  <div class="box-tools pull-right">
-                    <ul class="pagination pagination-sm inline">
-                      <li><a href="#">&laquo;</a></li>
-                      <li><a href="#">1</a></li>
-                      <li><a href="#">2</a></li>
-                      <li><a href="#">3</a></li>
-                      <li><a href="#">&raquo;</a></li>
-                    </ul>
-                  </div>
-                </div><!-- /.box-header -->
-                <div class="box-body">
-                  <ul class="todo-list">
-                    <li>
-                      <!-- drag handle -->
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <!-- checkbox -->
-                      <input type="checkbox" value="" name=""/>
-                      <!-- todo text -->
-                      <span class="text">Design a nice theme</span>
-                      <!-- Emphasis label -->
-                      <small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>
-                      <!-- General tools such as edit or delete-->
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Make the theme responsive</span>
-                      <small class="label label-info"><i class="fa fa-clock-o"></i> 4 hours</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 day</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="label label-success"><i class="fa fa-clock-o"></i> 3 days</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Check your messages and notifications</span>
-                      <small class="label label-primary"><i class="fa fa-clock-o"></i> 1 week</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                    <li>
-                      <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                      <input type="checkbox" value="" name=""/>
-                      <span class="text">Let theme shine like a star</span>
-                      <small class="label label-default"><i class="fa fa-clock-o"></i> 1 month</small>
-                      <div class="tools">
-                        <i class="fa fa-edit"></i>
-                        <i class="fa fa-trash-o"></i>
-                      </div>
-                    </li>
-                  </ul>
-                </div><!-- /.box-body -->
-                <div class="box-footer clearfix no-border">
-                  <button class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                </div>
-              </div><!-- /.box -->
-
-            </section><!-- /.Left col -->
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
-            <section class="col-lg-5 connectedSortable">
-
+            <section class="connectedSortable">
               <!-- Map box -->
               <div class="box box-solid bg-light-blue-gradient">
                 <div class="box-header">
@@ -210,31 +58,36 @@
 
                   <i class="fa fa-map-marker"></i>
                   <h3 class="box-title">
-                    Visitors
+                    Map View
                   </h3>
                 </div>
                 <div class="box-body">
-                  <div id="world-map" style="height: 250px; width: 100%;"></div>
+                  <div id="map" style="height: 400px; width: 100%;"></div>
                 </div><!-- /.box-body-->
                 <div class="box-footer no-border">
-                  <div class="row">
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-1"></div>
-                      <div class="knob-label">Visitors</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center" style="border-right: 1px solid #f4f4f4">
-                      <div id="sparkline-2"></div>
-                      <div class="knob-label">Online</div>
-                    </div><!-- ./col -->
-                    <div class="col-xs-4 text-center">
-                      <div id="sparkline-3"></div>
-                      <div class="knob-label">Exists</div>
-                    </div><!-- ./col -->
-                  </div><!-- /.row -->
                 </div>
               </div>
               <!-- /.box -->
 
+            </section><!-- /.Left col -->
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            <section class="col-lg-6 connectedSortable">
+            
+             <!-- Custom tabs (Charts with tabs)-->
+              <div class="nav-tabs-custom">
+                <!-- Tabs within a box -->
+                <ul class="nav nav-tabs pull-right">
+                  <li class="active"><a href="#revenue-chart" data-toggle="tab">Area</a></li>
+                  <li class="pull-left header"><i class="fa fa-inbox"></i> Temperature</li>
+                </ul>
+                <div class="tab-content no-padding">
+                  <!-- Morris chart - Temperature -->
+                  <div class="chart tab-pane active" id="revenue-chart" style="position: relative; height: 350px;"></div>
+                  
+                </div>
+              </div><!-- /.nav-tabs-custom -->
+			</section>
+			<section class="col-lg-6 connectedSortable">
               <!-- solid temperature graph -->
               <div class="box box-solid bg-teal-gradient">
                 <div class="box-header">
@@ -265,7 +118,8 @@
                   </div><!-- /.row -->
                 </div><!-- /.box-footer -->
               </div><!-- /.box -->
-
+             </section>
+			<section class="col-lg-5 connectedSortable">
               <!-- Calendar -->
               <div class="box box-solid bg-green-gradient">
                 <div class="box-header">
@@ -334,6 +188,113 @@
 
             </section><!-- right col -->
           </div><!-- /.row (main row) -->
-
+		
+		
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
+<!--  Map -->
+<script>
+window.addEventListener('load', function () {
+	$.ajax({
+		type : "GET",
+		url : "http://localhost:8080/CloudSense/getMapNodes",
+		success: function(result){
+				
+			    var sensorMapInput = [];
+			    var nodeMapInput = [];
+			    var clusterMapInput = [];
+		
+				$.each(result.sensors, function(i, sensor) {
+					sensorMapInput[i] = [parseFloat(sensor.sensorLatitude), parseFloat(sensor.sensorLongitude)];
+				}); 
+				$.each(result.smartnodes, function(i, node) {
+					nodeMapInput[i] = [parseFloat(node.nodeLatitude), parseFloat(node.nodeLongitude)];
+				});
+				$.each(result.clusters, function(i, cluster) {
+					clusterMapInput[i] = [parseFloat(cluster.clusterLatitude), parseFloat(cluster.clusterLongitude)];
+				});
+				initMap(sensorMapInput,nodeMapInput,clusterMapInput);
+				console.log("Success: ", sensorMapInput);
+				
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+		}
+	});
+	 
+}, false);
+
+function initMap(sensorlocations, nodelocations, clusterlocations) {
+	
+	 var iconBase = 'http://maps.google.com/mapfiles/ms/icons/';
+    var icons = {
+      smartnode: {
+        icon: iconBase + 'green-dot.png'
+      },
+      cluster: {
+        icon: iconBase + 'blue-dot.png'
+      },
+      sensor: {
+        icon: iconBase + 'red-dot.png'
+      }
+    };
+	
+   if (sensorlocations instanceof Array || nodelocations instanceof Array || clusterlocations instanceof Array ) {
+	   console.log("Success: ", sensorlocations);
+   	var features = [];
+   	for (i = 0; i < sensorlocations.length; i++) { 
+   		features.push(  {
+               position: new google.maps.LatLng(sensorlocations[i][0], sensorlocations[i][1]),
+               type: 'sensor'
+             });
+   	}
+   	
+   	for (i = 0; i < nodelocations.length; i++) { 
+   		features.push(  {
+               position: new google.maps.LatLng(nodelocations[i][0], nodelocations[i][1]),
+               type: 'smartnode'
+             });
+   	}
+   	
+   	for (i = 0; i < clusterlocations.length; i++) { 
+   		features.push(  {
+               position: new google.maps.LatLng(clusterlocations[i][0], clusterlocations[i][1]),
+               type: 'cluster'
+             });
+   	}
+   	
+   	
+
+  	    var centerOfMap = {lat: sensorlocations[0][0], lng: sensorlocations[0][1]};
+       // The map, centered at Uluru
+       var map = new google.maps.Map(
+       document.getElementById('map'), {zoom: 8, center: centerOfMap});
+
+       // The marker, positioned at center
+       var marker, i;
+
+       // var marker = new google.maps.Marker({position: center, map: map});
+
+       // Create markers.
+   	features.forEach(function(feature) { 
+       marker = new google.maps.Marker({
+       	position: feature.position,
+           icon: icons[feature.type].icon,
+           map: map
+       });
+
+       google.maps.event.addListener(marker, 'click', (function(marker, i) {
+         return function() {
+           infowindow.setContent(marker.getPosition());
+           infowindow.open(map, marker);
+         }
+       })(marker, i));
+     });
+   } else {
+       return 0;
+   }
+}
+</script>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzHhALhcJS-Q5LVYzbTkS9zb1rNhwUeOU&callback=initMap">
+</script>

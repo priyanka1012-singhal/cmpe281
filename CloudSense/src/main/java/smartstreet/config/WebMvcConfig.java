@@ -6,10 +6,8 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ResourceBundleMessageSource;
-import org.springframework.data.mongodb.MongoDbFactory;
-import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -17,12 +15,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
-
-import com.mongodb.MongoClient;
  
 @Configuration
 @EnableWebMvc
@@ -33,7 +27,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     * View Resolver
     * @return InternalResourceViewResolver
     */
-  /* @Bean
+  /*@Bean
    public InternalResourceViewResolver resolver() {
       InternalResourceViewResolver resolver = new InternalResourceViewResolver();
       resolver.setViewClass(JstlView.class);
@@ -71,8 +65,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
       registry.addResourceHandler("/dist/**").addResourceLocations("/WEB-INF/views/jsp/dist/");
    // Register resource handler for plugins
       registry.addResourceHandler("/plugins/**").addResourceLocations("/WEB-INF/views/jsp/plugins/");
+      // Register resource handler for fusion charts
+      registry.addResourceHandler("fusioncharts.js").addResourceLocations("/WEB-INF/views/jsp/fusioncharts.js");
+      
+      // Register resource handler for fusion charts
+      registry.addResourceHandler("fusioncharts.js").addResourceLocations("/WEB-INF/views/jsp/fusioncharts.js");
+      registry.addResourceHandler("fusioncharts.charts.js").addResourceLocations("/WEB-INF/views/jsp/fusioncharts.charts.js");
+      registry.addResourceHandler("fusioncharts.theme.fint.js").addResourceLocations("/WEB-INF/views/jsp/fusioncharts.theme.fint.js");
    }
-   
   
    
    /**
@@ -88,30 +88,38 @@ public class WebMvcConfig implements WebMvcConfigurer {
     * Resource Bundle for error messages
     * @return MessageSource
     */
-   /*
+   
    @Bean
    public MessageSource messageSource() {
       ResourceBundleMessageSource source = new ResourceBundleMessageSource();
       source.setBasename("messages");
       return source;
-   }*/
+   }
    
    /**
     * Mongo DB instance for nosql DB
     * @return MongoDbFactory
     */
-   /*
-   @Bean
-   public MongoDbFactory mongoDbFactory() {
-	   return new SimpleMongoDbFactory(new MongoClient("localhost",27017),"cloudsenseiotdb");
+   
+  /* @Bean
+   public MongoDbFactory mongoDbFactory(){
+	
+	   MongoClientURI uri = new MongoClientURI(
+			    "mongodb://iotcluster:iotcluster@iotcluster-shard-00-00-72f0t.mongodb.net:27017,iotcluster-shard-00-01-72f0t.mongodb.net:27017,iotcluster-shard-00-02-72f0t.mongodb.net:27017/admin?ssl=true&replicaSet=iotcluster-shard-0&authSource=admin");
+	   
+	   return new SimpleMongoDbFactory(new MongoClient(uri),
+			   "iotcluster");
+	   
+	  
+			
    }*/
    
    /**
     * Mongo DB Template
     * @return MongoTemplate
     */
-   /*
-   @Bean
+   
+  /* @Bean
    public MongoTemplate mongoTemplate() {
 	   return new MongoTemplate(mongoDbFactory());
    }*/

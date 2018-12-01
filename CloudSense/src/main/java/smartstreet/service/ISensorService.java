@@ -9,8 +9,9 @@ public interface ISensorService {
 	/**
 	 * Add sensor
 	 * @param sensor
+	 * @throws Exception 
 	 */
-	public boolean addSensor(Sensor sensor);
+	public boolean addSensor(Sensor sensor) ;
 	
 	/**
 	 * Get List of sensors

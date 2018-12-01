@@ -1,13 +1,18 @@
 package smartstreet.model;
 
-import java.sql.Date;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.format.annotation.DateTimeFormat;
 /**
  * Cluster Model class
  * @author priyankasinghal
  *
  */
 public class Cluster {
-	private String id;
+	@Id
+	private int id;
 	private String clusterName ;
 	private String clusterDesc ;
 	private int clusterStatus  ;
@@ -19,13 +24,18 @@ public class Cluster {
 	private String clusterCountry ;
 	private String clusterZip ;
 	private String installedBy ;
+	private List<SmartNode> nodes;
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date installationDate  ;
 	private String lastMaintainedBy ;
+	private int smartnodecount;
+	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date lastMaintainedDate ;
-	public String getId() {
+	private int smartnodeIdCount;
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getClusterName() {
@@ -112,6 +122,23 @@ public class Cluster {
 	public void setLastMaintainedDate(Date lastMaintainedDate) {
 		this.lastMaintainedDate = lastMaintainedDate;
 	}
-	
+	public int getSmartnodecount() {
+		return smartnodecount;
+	}
+	public void setSmartnodecount(int smartnodecount) {
+		this.smartnodecount = smartnodecount;
+	}
+	public List<SmartNode> getNodes() {
+		return nodes;
+	}
+	public void setNodes(List<SmartNode> nodes) {
+		this.nodes = nodes;
+	}
+	public int getSmartnodeIdCount() {
+		return smartnodeIdCount;
+	}
+	public void setSmartnodeIdCount(int smartnodeIdCount) {
+		this.smartnodeIdCount = smartnodeIdCount;
+	}
 	
 }
