@@ -38,12 +38,13 @@ public class SensorDaoImpl implements ISensorDao{
 		   		+ "sensor_address,"
 		   		+ "sensor_city,"
 		   		+ "sensor_state,"
+		   		+ "sensor_country,"
 		   		+ "sensor_zip,"
 		   		+ "installed_by,"
 		   		+ "installation_date,"
 		   		+ "last_maintained_by,"
 		   		+ "last_maintained_date"
-		   		+ ") values (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
+		   		+ ") values (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?,?, ?)";
 		   jdbcTemplate.update(sql,  
 				   sensor.getSensorName(),
 				   sensor.getDeviceid(),
@@ -55,6 +56,7 @@ public class SensorDaoImpl implements ISensorDao{
 				   sensor.getSensorAddress(),
 				   sensor.getSensorCity(),
 				   sensor.getSensorState(),
+				   sensor.getSensorCountry(),
 				   sensor.getSensorZip(),
 				   sensor.getInstalledBy(),
 				   sensor.getInstallationDate(),
