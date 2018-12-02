@@ -3,12 +3,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-           Update Sensor
+           Update Smart Node
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Manage Sensor</a></li>
-            <li class="active">Update Sensor</li>
+            <li><a href="#">Manage Smart Node</a></li>
+            <li class="active">Update Smart Node</li>
           </ol>
         </section>
 
@@ -20,83 +20,52 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- form start -->
-                <form:form role="form" action="/CloudSense/sensor/update" method="POST" modelAttribute="sensor">
+                <form:form role="form" action="/CloudSense/node/update" method="POST" modelAttribute="node">
                   <div class="box-body">
-                  <div class="form-group">
-                      <label>Sensor Id</label>
-                      <form:input class="form-control" path="id"/>
+                  	 <div class="form-group">
+                      <label>Smart Node Id</label>
+                      <form:input type="text" class="form-control" path="id"/>
                     </div>
                      <!-- text input -->
                     <div class="form-group">
-                      <label>Sensor Name</label>
-                      <form:input class="form-control" path="sensorName" />
+                      <label>Smart Node Name</label>
+                      <form:input type="text" class="form-control" path="nodeName" placeholder="Node Name"/>
                     </div>
                     <div class="form-group">
                       <label>Description</label>
-                      <form:input type="text" class="form-control" path="sensorDesc" name="sensorDesc" placeholder="Description"/>
-                    </div> 
-                     <div class="form-group">
-                      <label>Device Type</label>
-                      <form:select class="form-control" path="deviceType">
-                      	<form:option value="NONE" label="--- Select ---"/>
-                        <form:option value="Station" label="Station"/>
-                         <form:option value="Controller" label="Controller"/>                 
-                      </form:select>
-                    </div>
-                    <div class="form-group">
-                      <label>Serial Number</label>
-                       <form:input type="text" path="deviceid" class="form-control" placeholder="Serial Number"/>
-                    </div>
-                    <div class="form-group">
-                      <label>Sensor Type</label>
-                      <form:select class="form-control" path="sensorType">
-                      	<form:option value="NONE" label="--- Select ---"/>
-                      	<form:option value="Air Temperature" label="Air Temperature"/>
-                      	<form:option value="Wet Bulb Temperature" label="Wet Bulb Temperature"/>
-                      	<form:option value="Pressure" label="Pressure"/>
-                      	<form:option value="Humidity" label="Humidity"/>
-                      	<form:option value="Rain" label="Rain"/>                 
-                      </form:select>
-                    </div>
+                      <form:input type="text" class="form-control"  path="nodeDesc" placeholder="Description"/>
+                    </div>  
                     
-                     <div class="form-group">
-                      <label>Sensor Frequency</label>
-                      <form:input type="text" class="form-control" path="sensorFrequency" name="sensorFrequency" placeholder="Frequency"/>
-                    </div> 
-                                                              
                     <div class="form-group">
                       <label>Status</label>
-                       <form:select class="form-control" path="sensorStatus">
+                       <form:select class="form-control" path="nodeStatus">
                       	<form:option  value="Turn On">Turn On</form:option>
                         <form:option  value="Turn Off">Turn Off</form:option>
                         <form:option  value="Active">Active</form:option>
                         <form:option  value="Inactive">Inactive</form:option>
                         <form:option  value="Maintenance">Maintenance</form:option>
                       </form:select>
-                    </div> 
+                    </div>  
+                    
                     <div class="form-group">
                       <label>Address</label>
-                      <form:input type="text" path="sensorAddress" class="form-control" placeholder="Address"/>
-                    </div>
-                    <div class="form-group">
-                      <label>City</label>
-                      <form:input type="text" path="sensorCity" class="form-control" placeholder="City"/>
+                      <form:input type="text" path="nodeAddress" class="form-control" placeholder="Address"/>
                     </div>
                     <div class="form-group">
                       <label>State</label>
-                      <form:input type="text" path="sensorState" class="form-control" placeholder="State"/>
+                      <form:input type="text" class="form-control"  path="nodeState" placeholder="State"/>
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
                       <label>Country</label>
-                      <form:input type="text" class="form-control"  path="sensorCountry" placeholder="Country"/>
+                      <form:input type="text" class="form-control"  path="nodeCountry" placeholder="Country"/>
                     </div> 
                      <div class="form-group">
-                      <label>Block</label>
-                      <form:input type="text" class="form-control"  path="sensorBlock" placeholder="Group"/>
-                    </div>       
+                      <label>Group</label>
+                      <form:input type="text" class="form-control"  path="nodeBlock" placeholder="Group"/>
+                    </div>    
                     <div class="form-group">
                       <label>Zip</label>
-                      <form:input type="text" path="sensorZip" class="form-control" placeholder="Zip"/>
+                      <form:input type="text" path="nodeZip" class="form-control" placeholder="Zip"/>
                     </div>
                     <div class="form-group">
                       <label>Installation Date</label>

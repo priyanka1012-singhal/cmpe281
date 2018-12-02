@@ -68,21 +68,7 @@ public class SensorDaoImpl implements ISensorDao{
 	 * @return List of sensors
 	 */
 	public List<Sensor> getAllSensors() {
-		   String sql = "SELECT sensor_id, sensor_name, "
-				   		+ "device_id,"
-				   		+ "sensor_status,"
-				   		+ "device_type,"
-				   		+ "sensor_type,"
-				   		+ "sensor_latitude,"
-				   		+ "sensor_longitude,"
-				   		+ "sensor_address,"
-				   		+ "sensor_city,"
-				   		+ "sensor_state,"
-				   		+ "sensor_zip,"
-				   		+ "installed_by,"
-				   		+ "installation_date,"
-				   		+ "last_maintained_by,"
-				   		+ "last_maintained_date"
+		   String sql = "SELECT *"
 		   		+ " FROM sensor";
 		   RowMapper<Sensor> rowMapper = new SensorRowMapper();		
 		   return this.jdbcTemplate.query(sql, rowMapper);
@@ -94,7 +80,7 @@ public class SensorDaoImpl implements ISensorDao{
 	 * @return
 	 */
 	public Sensor getSensorById(String sensorId) {
-		String sql = "SELECT sensor_id, sensor_name, sensor_status FROM sensor WHERE sensor_id = ?";
+		String sql = "SELECT * FROM sensor WHERE sensor_id = ?";
 		RowMapper<Sensor> rowMapper = new SensorRowMapper();		
 		Sensor article = jdbcTemplate.queryForObject(sql, rowMapper, sensorId);
 		return article;

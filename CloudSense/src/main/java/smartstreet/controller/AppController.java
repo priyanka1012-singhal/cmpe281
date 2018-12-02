@@ -22,7 +22,6 @@ import smartstreet.service.ISmartNodeService;
  
  
 @Controller
-@RequestMapping("/")
 public class AppController {
 	@Autowired
 	ISensorService sensorService;
@@ -33,10 +32,30 @@ public class AppController {
 	
 	private final static Logger logger = Logger.getLogger(AppController.class.getName());
 	
-    @RequestMapping(value = { "/"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/"}, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
+        return "signin";
+    }
+	
+    @RequestMapping(value = { "/dashboard"}, method = RequestMethod.GET)
+    public String sensorstationmainPage(ModelMap model) {
+        return "sensorstationdashboard";
+    }
+	
+    @RequestMapping(value = { "/iotdashboard"}, method = RequestMethod.GET)
+    public String iotmanagermainPage(ModelMap model) {
         return "iotmanagerdashboard";
     }
+    
+  //sign in page
+    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+    public String signinpage() {
+      return "signin";
+    }
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String register() {
+      return "register";
+    }   
     
     @RequestMapping(value = { "/getMapNodes"}, method = RequestMethod.GET)
     public ResponseEntity<ResponseDto> getMapNodes(ModelMap model) {

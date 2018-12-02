@@ -22,7 +22,7 @@ public class SensorRowMapper implements RowMapper<Sensor> {
 		Sensor sensor = new Sensor();
 		sensor.setId(row.getInt("sensor_id"));
 		sensor.setSensorName(row.getString("sensor_name"));
-		sensor.setSensorStatus(row.getInt("sensor_status"));
+		sensor.setSensorStatus(row.getString("sensor_status"));
 		sensor.setSensorType(row.getString("sensor_type"));
 		sensor.setDeviceType(row.getString("device_type"));
 		sensor.setDeviceid(row.getString("device_id"));

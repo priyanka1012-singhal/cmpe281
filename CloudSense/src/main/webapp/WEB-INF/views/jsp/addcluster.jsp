@@ -29,10 +29,17 @@
                       <form:input type="text" class="form-control" path="clusterName" placeholder="Cluster Name"/>
                     </div>
                     <div class="form-group">
+                      <label>Description</label>
+                      <form:input type="text" class="form-control"  path="clusterDesc" placeholder="Description"/>
+                    </div> 
+                    <div class="form-group">
                       <label>Status</label>
                        <form:select class="form-control" path="clusterStatus">
-                      	<form:option value="1" label="Active"/>
-                      	<form:option value="0" label="Inactive"/>
+                      	<form:option  value="Turn On">Turn On</form:option>
+                        <form:option  value="Turn Off">Turn Off</form:option>
+                        <form:option  value="Active">Active</form:option>
+                        <form:option  value="Inactive">Inactive</form:option>
+                        <form:option  value="Maintenance">Maintenance</form:option>
                       </form:select>
                     </div> 
                     <div class="form-group">
@@ -41,18 +48,20 @@
                     </div>
                     <div class="form-group">
                       <label>City</label>
-                       <form:select class="form-control" path="clusterCity">
-                        <form:option value="NONE" label="--- Select ---"/>
-                      	<form:option value="Chicago" label="Chicago"/>
-                      </form:select>
+                      <form:input type="text" class="form-control"  path="clusterCity" placeholder="City"/>
                     </div>
-                    <div class="form-group">
+                     <div class="form-group">
                       <label>State</label>
-                     <form:select class="form-control" path="clusterState">
-                     	<form:option value="NONE" label="--- Select ---"/>
-                      	<form:option value="IL" label="IL"/>
-                      </form:select>
+                      <form:input type="text" class="form-control"  path="clusterState" placeholder="State"/>
                     </div>
+                     <div class="form-group">
+                      <label>Country</label>
+                      <form:input type="text" class="form-control"  path="clusterCountry" placeholder="Country"/>
+                    </div> 
+                     <div class="form-group">
+                      <label>Group</label>
+                      <form:input type="text" class="form-control"  path="clusterBlock" placeholder="Group"/>
+                    </div>                 
                     <div class="form-group">
                       <label>Zip</label>
                       <form:input type="text" path="clusterZip" class="form-control" placeholder="Zip"/>

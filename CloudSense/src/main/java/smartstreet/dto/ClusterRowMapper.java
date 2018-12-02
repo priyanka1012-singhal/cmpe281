@@ -22,7 +22,7 @@ public class ClusterRowMapper implements RowMapper<Cluster> {
 		Cluster node = new Cluster();
 		node.setId(row.getInt("cluster_id"));
 		node.setClusterName(row.getString("cluster_name"));
-		node.setClusterStatus(row.getInt("cluster_status"));
+		node.setClusterStatus(row.getString("cluster_status"));
 		node.setClusterLatitude(row.getString("cluster_latitude"));
 		node.setClusterLongitude(row.getString("cluster_longitude"));
 		node.setInstallationDate(row.getDate("installation_date"));

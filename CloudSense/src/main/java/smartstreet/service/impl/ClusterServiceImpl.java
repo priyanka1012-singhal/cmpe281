@@ -63,7 +63,12 @@ public class ClusterServiceImpl implements IClusterService {
 
 	@Override
 	public void deleteCluster(int clusterId) {
-		clusterDao.deleteCluster(clusterId);
+		try {
+			clusterDao.deleteClusterMapping(clusterId);
+			clusterDao.deleteCluster(clusterId);
+		}catch(Exception e) {
+			
+		}
 		
 	}
 

@@ -28,6 +28,10 @@
                       <label>Sensor Name</label>
                       <form:input type="text" class="form-control" path="sensorName" placeholder="Sensor Name"/>
                     </div>
+                    <div class="form-group">
+                      <label>Description</label>
+                      <form:input type="text" class="form-control" path="sensorDesc" name="sensorDesc" placeholder="Description"/>
+                    </div> 
                      <div class="form-group">
                       <label>Device Type</label>
                       <form:select class="form-control" path="deviceType">
@@ -51,11 +55,20 @@
                       	<form:option value="Rain" label="Rain"/>                 
                       </form:select>
                     </div>
+                    
+                     <div class="form-group">
+                      <label>Sensor Frequency</label>
+                      <form:input type="text" class="form-control" path="sensorFrequency" name="sensorFrequency" placeholder="Frequency"/>
+                    </div> 
+                                                              
                     <div class="form-group">
                       <label>Status</label>
                        <form:select class="form-control" path="sensorStatus">
-                      	<form:option value="1" label="Active"/>
-                      	<form:option value="0" label="Inactive"/>
+                      	<form:option  value="Turn On">Turn On</form:option>
+                        <form:option  value="Turn Off">Turn Off</form:option>
+                        <form:option  value="Active">Active</form:option>
+                        <form:option  value="Inactive">Inactive</form:option>
+                        <form:option  value="Maintenance">Maintenance</form:option>
                       </form:select>
                     </div> 
                     <div class="form-group">
@@ -64,18 +77,20 @@
                     </div>
                     <div class="form-group">
                       <label>City</label>
-                       <form:select class="form-control" path="sensorCity">
-                        <form:option value="NONE" label="--- Select ---"/>
-                      	<form:option value="Chicago" label="Chicago"/>
-                      </form:select>
+                      <form:input type="text" path="sensorCity" class="form-control" placeholder="City"/>
                     </div>
                     <div class="form-group">
                       <label>State</label>
-                     <form:select class="form-control" path="sensorState">
-                     	<form:option value="NONE" label="--- Select ---"/>
-                      	<form:option value="IL" label="IL"/>
-                      </form:select>
+                      <form:input type="text" path="sensorState" class="form-control" placeholder="State"/>
                     </div>
+                    <div class="form-group">
+                      <label>Country</label>
+                      <form:input type="text" class="form-control"  path="sensorCountry" placeholder="Country"/>
+                    </div> 
+                     <div class="form-group">
+                      <label>Block</label>
+                      <form:input type="text" class="form-control"  path="sensorBlock" placeholder="Group"/>
+                    </div>       
                     <div class="form-group">
                       <label>Zip</label>
                       <form:input type="text" path="sensorZip" class="form-control" placeholder="Zip"/>

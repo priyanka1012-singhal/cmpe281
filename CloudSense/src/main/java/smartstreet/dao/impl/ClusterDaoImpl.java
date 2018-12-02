@@ -63,18 +63,7 @@ public class ClusterDaoImpl implements IClusterDao{
 
 	@Override
 	public List<Cluster> getAllClusters() {
-		String sql = "SELECT cluster.cluster_id, cluster.cluster_name, "
-		   		+ "cluster.cluster_status,"
-		   		+ "cluster.cluster_latitude,"
-		   		+ "cluster.cluster_longitude,"
-		   		+ "cluster.cluster_address,"
-		   		+ "cluster.cluster_city,"
-		   		+ "cluster.cluster_state,"
-		   		+ "cluster.cluster_zip,"
-		   		+ "cluster.installed_by,"
-		   		+ "cluster.installation_date,"
-		   		+ "cluster.last_maintained_by,"
-		   		+ "cluster.last_maintained_date"
+		String sql = "SELECT *"
    		+ " FROM cluster_node cluster";
    RowMapper<Cluster> rowMapper = new ClusterRowMapper();		
    return this.jdbcTemplate.query(sql, rowMapper);
@@ -82,18 +71,7 @@ public class ClusterDaoImpl implements IClusterDao{
 
 	@Override
 	public Cluster getClusterById(int clusterId) {
-		String sql = "SELECT cluster.cluster_id, cluster.cluster_name, \"\n" + 
-				"		   		+ \"cluster.cluster_status,\"\n" + 
-				"		   		+ \"cluster.cluster_latitude,\"\n" + 
-				"		   		+ \"cluster.cluster_longitude,\"\n" + 
-				"		   		+ \"cluster.cluster_address,\"\n" + 
-				"		   		+ \"cluster.cluster_city,\"\n" + 
-				"		   		+ \"cluster.cluster_state,\"\n" + 
-				"		   		+ \"cluster.cluster_zip,\"\n" + 
-				"		   		+ \"cluster.installed_by,\"\n" + 
-				"		   		+ \"cluster.installation_date,\"\n" + 
-				"		   		+ \"cluster.last_maintained_by,\"\n" + 
-				"		   		+ \"cluster.last_maintained_date\"\n" 
+		String sql = "SELECT *" 
    		+ " FROM cluster_node cluster where  cluster.cluster_id = ? ";
 	RowMapper<Cluster> rowMapper = new ClusterRowMapper();		
 	Cluster smartNode = jdbcTemplate.queryForObject(sql, rowMapper, clusterId);
@@ -178,10 +156,19 @@ public class ClusterDaoImpl implements IClusterDao{
 	
 		
 	public List<SmartNode> getUnmappedSmartNodeNames(int clusterId) {
-				   String sql = "SELECT node_id, node_name, "
-				   		+ " FROM smart_node node, cluster_node_mapping map where map.node_id!=node.node_id AND map.cluster_id= ?";
+					
+		String sql = "SELECT * FROM smart_node node WHERE node.node_id NOT IN (SELECT map.node_id FROM cluster_node_mapping map"+
+				   " WHERE map.cluster_id=?)";
 				   RowMapper<SmartNode> rowMapper = new SmartNodeRowMapper();		
 				   return this.jdbcTemplate.query(sql, rowMapper, clusterId);
+	}
+	
+	@Override
+	public void deleteClusterMapping(int clusterId) {
+		//Delete from smart node - cluster mapping
+		String sql = "DELETE FROM cluster_node_mapping WHERE cluster_id=?";
+		jdbcTemplate.update(sql, clusterId);
+		
 	}
 
 }

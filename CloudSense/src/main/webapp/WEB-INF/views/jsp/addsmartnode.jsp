@@ -29,32 +29,37 @@
                       <form:input type="text" class="form-control" path="nodeName" placeholder="Node Name"/>
                     </div>
                     <div class="form-group">
+                      <label>Description</label>
+                      <form:input type="text" class="form-control"  path="nodeDesc" placeholder="Description"/>
+                    </div>  
+                    
+                    <div class="form-group">
                       <label>Status</label>
                        <form:select class="form-control" path="nodeStatus">
-                      	<form:option value="1" label="Active"/>
-                      	<form:option value="0" label="Inactive"/>
+                      	<form:option  value="Turn On">Turn On</form:option>
+                        <form:option  value="Turn Off">Turn Off</form:option>
+                        <form:option  value="Active">Active</form:option>
+                        <form:option  value="Inactive">Inactive</form:option>
+                        <form:option  value="Maintenance">Maintenance</form:option>
                       </form:select>
-                    </div> 
+                    </div>  
+                    
                     <div class="form-group">
                       <label>Address</label>
                       <form:input type="text" path="nodeAddress" class="form-control" placeholder="Address"/>
                     </div>
                     <div class="form-group">
-                      <label>City</label>
-                       <form:select class="form-control" path="nodeCity">
-                        <form:option value="NONE" label="--- Select ---"/>
-                      	<form:option value="Chicago" label="Chicago"/>
-                      	<form:option value="San Jose" label="San Jose"/>
-                      </form:select>
-                    </div>
-                    <div class="form-group">
                       <label>State</label>
-                     <form:select class="form-control" path="nodeState">
-                     	<form:option value="NONE" label="--- Select ---"/>
-                      	<form:option value="IL" label="IL"/>
-                      	<form:option value="CAL" label="CAL"/>
-                      </form:select>
+                      <form:input type="text" class="form-control"  path="nodeState" placeholder="State"/>
                     </div>
+                     <div class="form-group">
+                      <label>Country</label>
+                      <form:input type="text" class="form-control"  path="nodeCountry" placeholder="Country"/>
+                    </div> 
+                     <div class="form-group">
+                      <label>Group</label>
+                      <form:input type="text" class="form-control"  path="nodeBlock" placeholder="Group"/>
+                    </div>    
                     <div class="form-group">
                       <label>Zip</label>
                       <form:input type="text" path="nodeZip" class="form-control" placeholder="Zip"/>

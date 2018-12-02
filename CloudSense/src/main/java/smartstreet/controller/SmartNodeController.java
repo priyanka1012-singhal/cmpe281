@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,9 +31,9 @@ public class SmartNodeController {
 private final static Logger logger = Logger.getLogger(SmartNodeController.class.getName());
 	
 	@GetMapping("/node/{id}")
-	public ModelAndView getSmartNodeById(@PathVariable("id") int id, Model model) {
+	public ModelAndView getSmartNodeById(@PathVariable("id") int id) {
 		SmartNode node= smartNodeService.getSmartNodeById(id);
-		return new ModelAndView("viewsmartnode", "node",node);
+		return new ModelAndView("viewsmartnodeinfo", "node",node);
 	}
 	
 	@GetMapping("/viewsmartnode/node/{id}")
@@ -97,14 +96,21 @@ private final static Logger logger = Logger.getLogger(SmartNodeController.class.
         logger.info("Exit addSmartNode");
             return new ModelAndView("viewsmartnode","nodeList",nodeList);
 	}
-	@PutMapping("/node/update")
-	public ModelAndView updateSmartNode(@RequestBody SmartNode node) {
+	@PostMapping("/node/update")
+	public ModelAndView updateSmartNode(@ModelAttribute("node") SmartNode node, BindingResult result) {
 		logger.info("Enter updateSmartNode");
-		//smartNodeService.updateSmartNode(node);
+		smartNodeService.updateSmartNode(node);
 		List<SmartNode> nodeList = smartNodeService.getAllSmartNodes();
 		logger.info("Exit updateSmartNode");
 		return new ModelAndView("viewsmartnode","nodeList",nodeList);
 	}
+	
+	@GetMapping("/editnode/{id}")
+	public ModelAndView edit(@PathVariable("id") int id) {
+		SmartNode node= smartNodeService.getSmartNodeById(id);
+		return new ModelAndView("updatesmartnode", "node",node);
+	}
+	
 	@GetMapping("/node/{id}/delete")
 	public ModelAndView deleteSmartNode(@PathVariable("id") int id) {
 		logger.info("Enter deleteSmartNode");

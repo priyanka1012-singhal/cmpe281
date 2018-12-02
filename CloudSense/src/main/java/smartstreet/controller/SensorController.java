@@ -4,14 +4,11 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,9 +31,9 @@ public class SensorController {
 	private final static Logger logger = Logger.getLogger(SensorController.class.getName());
 	
 	@GetMapping("/sensor/{id}")
-	public ModelAndView getSensorById(@PathVariable("id") String id, Model model) {
+	public ModelAndView getSensorById(@PathVariable("id") String id) {
 		Sensor sensor= sensorService.getSensorById(id);
-		return new ModelAndView("viewsensor", "sensor",sensor);
+		return new ModelAndView("viewsensorinfo", "sensor",sensor);
 	}
 	@GetMapping("/viewsensor")
 	public ModelAndView getAllSensors() {
@@ -53,13 +50,20 @@ public class SensorController {
         logger.info("Exit addSensor");
             return new ModelAndView("viewsensor","sensorList",sensorList);
 	}
-	@PutMapping("/sensor/update")
-	public ModelAndView updateSensor(@ModelAttribute("sensor") Sensor sensor) {
+	@PostMapping("/sensor/update")
+	public ModelAndView updateSensor(@ModelAttribute("sensor") Sensor sensor, BindingResult result) {
 		sensorService.updateSensor(sensor);
 		List<Sensor> sensorList = sensorService.getAllSensors();
 		return new ModelAndView("viewsensor","sensorList",sensorList);
 	}
-	@DeleteMapping("/sensor/{id}/delete")
+	
+	@GetMapping("/editsensor/{id}")
+	public ModelAndView edit(@PathVariable("id") String id) {
+		Sensor sensor= sensorService.getSensorById(id);
+		return new ModelAndView("updatesensor", "sensor",sensor);
+	}
+	
+	@GetMapping("/sensor/{id}/delete")
 	public ModelAndView deleteSensor(@PathVariable("id") String id) {
 		logger.info("Enter deleteSensor");
 		sensorService.deleteSensor(id);
