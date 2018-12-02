@@ -37,7 +37,8 @@ CREATE TABLE `cluster_node` (
   `installation_date` datetime DEFAULT NULL,
   `last_maintained_by` int(11) DEFAULT NULL,
   `last_maintained_date` datetime DEFAULT NULL,
-  `cluster_status` int(11) DEFAULT NULL,
+  `cluster_status` varchar(45) DEFAULT NULL,
+  `cluster_block` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`cluster_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -48,7 +49,7 @@ CREATE TABLE `cluster_node` (
 
 LOCK TABLES `cluster_node` WRITE;
 /*!40000 ALTER TABLE `cluster_node` DISABLE KEYS */;
-INSERT INTO `cluster_node` VALUES (3,'Node Ashland',NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',NULL,'2017-12-31 21:11:00',NULL,'2017-12-31 21:11:00',1);
+INSERT INTO `cluster_node` VALUES (3,'Node Ashland',NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',NULL,'2017-12-31 21:11:00',NULL,'2017-12-31 21:11:00','1',NULL);
 /*!40000 ALTER TABLE `cluster_node` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +198,7 @@ CREATE TABLE `sensor` (
   `device_id` varchar(45) DEFAULT NULL,
   `sensor_name` varchar(45) DEFAULT NULL,
   `sensor_desc` varchar(255) DEFAULT NULL,
-  `sensor_status` int(11) DEFAULT NULL,
+  `sensor_status` varchar(50) DEFAULT NULL,
   `sensor_type` varchar(45) DEFAULT NULL,
   `sensor_frequency` varchar(45) DEFAULT NULL,
   `sensor_provider_name` varchar(45) DEFAULT NULL,
@@ -217,6 +218,7 @@ CREATE TABLE `sensor` (
   `last_maintained_by` int(11) DEFAULT NULL,
   `last_maintained_date` datetime DEFAULT NULL,
   `device_type` varchar(45) DEFAULT NULL,
+  `sensor_block` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`sensor_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -227,7 +229,7 @@ CREATE TABLE `sensor` (
 
 LOCK TABLES `sensor` WRITE;
 /*!40000 ALTER TABLE `sensor` DISABLE KEYS */;
-INSERT INTO `sensor` VALUES (9,'ABC111111334','Oak Street Weather',NULL,0,'Air Temperature',NULL,NULL,NULL,NULL,NULL,NULL,'41.9007199','-87.6274937','Oak Street','Chicago','IL',NULL,'60610',0,'2018-11-06 21:00:00',0,'2018-11-07 21:00:00','Station'),(10,'SUN2345655','65th foster Ave Station',NULL,1,'Wet Bulb Temperature',NULL,NULL,NULL,NULL,NULL,NULL,'41.976263','-87.6635477','65th Foster Ave','Chicago','IL',NULL,'60640',0,'2018-07-03 21:00:00',0,'2018-10-31 21:00:00','Station'),(11,'NEW124567','N ashland ave station',NULL,1,'Pressure',NULL,NULL,NULL,NULL,NULL,NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',0,'2018-05-01 21:00:00',0,'2018-11-27 21:00:00','Station'),(16,'ABC111111334','100th St weather station',NULL,1,'Pressure',NULL,NULL,NULL,NULL,NULL,NULL,'41.713669','-87.5715543','2132 E 100th St','Chicago','IL',NULL,'60617',0,'2018-11-28 21:00:00',0,'2018-11-21 21:00:00','Station');
+INSERT INTO `sensor` VALUES (9,'ABC111111334','Oak Street Weather',NULL,'0','Air Temperature',NULL,NULL,NULL,NULL,NULL,NULL,'41.9007199','-87.6274937','Oak Street','Chicago','IL',NULL,'60610',0,'2018-11-06 21:00:00',0,'2018-11-07 21:00:00','Station',NULL),(10,'SUN2345655','65th foster Ave Station',NULL,'1','Wet Bulb Temperature',NULL,NULL,NULL,NULL,NULL,NULL,'41.976263','-87.6635477','65th Foster Ave','Chicago','IL',NULL,'60640',0,'2018-07-03 21:00:00',0,'2018-10-31 21:00:00','Station',NULL),(11,'NEW124567','N ashland ave station',NULL,'1','Pressure',NULL,NULL,NULL,NULL,NULL,NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',0,'2018-05-01 21:00:00',0,'2018-11-27 21:00:00','Station',NULL),(16,'ABC111111334','100th St weather station',NULL,'1','Pressure',NULL,NULL,NULL,NULL,NULL,NULL,'41.713669','-87.5715543','2132 E 100th St','Chicago','IL',NULL,'60617',0,'2018-11-28 21:00:00',0,'2018-11-21 21:00:00','Station',NULL);
 /*!40000 ALTER TABLE `sensor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -253,7 +255,8 @@ CREATE TABLE `smart_node` (
   `installation_date` datetime DEFAULT NULL,
   `last_maintained_by` int(11) DEFAULT NULL,
   `last_maintained_date` datetime DEFAULT NULL,
-  `node_status` int(11) DEFAULT NULL,
+  `node_status` varchar(50) DEFAULT NULL,
+  `node_block` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`node_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -264,7 +267,7 @@ CREATE TABLE `smart_node` (
 
 LOCK TABLES `smart_node` WRITE;
 /*!40000 ALTER TABLE `smart_node` DISABLE KEYS */;
-INSERT INTO `smart_node` VALUES (5,'Node 1st',NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',NULL,'2017-12-31 21:11:00',NULL,'2017-12-31 21:11:00',1),(6,'Node 1st',NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',NULL,'2017-12-31 21:11:00',NULL,'2017-12-31 21:11:00',1);
+INSERT INTO `smart_node` VALUES (5,'Node 1st',NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',NULL,'2017-12-31 21:11:00',NULL,'2017-12-31 21:11:00','1',NULL),(6,'Node 1st',NULL,'41.97539','-87.66996999999999','5134 N ashland ave','Chicago','IL',NULL,'60640',NULL,'2017-12-31 21:11:00',NULL,'2017-12-31 21:11:00','1',NULL);
 /*!40000 ALTER TABLE `smart_node` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,4 +316,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-01 16:20:44
+-- Dump completed on 2018-12-01 22:35:34
