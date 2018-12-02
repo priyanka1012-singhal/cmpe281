@@ -33,6 +33,7 @@ public class SensorRowMapper implements RowMapper<Sensor> {
 		sensor.setSensorAddress(row.getString("sensor_address"));
 		sensor.setSensorCity(row.getString("sensor_city"));
 		sensor.setSensorState(row.getString("sensor_state"));
+		sensor.setSensorCountry(row.getString("sensor_country"));
 		sensor.setSensorZip(row.getString("sensor_zip"));
 		
 		return sensor;
