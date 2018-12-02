@@ -33,10 +33,10 @@ public class Sensor {
 	private String sensorCountry ;
 	private String sensorZip ;
 	private String sensorBlock;
-	private int installedBy ;
+	private String installedBy ;
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date installationDate  ;
-	private int lastMaintainedBy ;
+	private String lastMaintainedBy ;
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date lastMaintainedDate ;
 	
@@ -162,13 +162,18 @@ public class Sensor {
 	public void setSensorZip(String sensorZip) {
 		this.sensorZip = sensorZip;
 	}
-	public int getInstalledBy() {
+
+	public String getInstalledBy() {
 		return installedBy;
 	}
-	public void setInstalledBy(int installedBy) {
-		if(installedBy == 0)
-			installedBy = 1;
+	public void setInstalledBy(String installedBy) {
 		this.installedBy = installedBy;
+	}
+	public String getLastMaintainedBy() {
+		return lastMaintainedBy;
+	}
+	public void setLastMaintainedBy(String lastMaintainedBy) {
+		this.lastMaintainedBy = lastMaintainedBy;
 	}
 	public Date getInstallationDate() {
 		return installationDate;
@@ -176,14 +181,7 @@ public class Sensor {
 	public void setInstallationDate(Date installationDate) {
 		this.installationDate = installationDate;
 	}
-	public int getLastMaintainedBy() {
-		return lastMaintainedBy;
-	}
-	public void setLastMaintainedBy(int lastMaintainedBy) {
-		if(lastMaintainedBy == 0)
-			lastMaintainedBy = 1;
-		this.lastMaintainedBy = lastMaintainedBy;
-	}
+
 	public Date getLastMaintainedDate() {
 		return lastMaintainedDate;
 	}
