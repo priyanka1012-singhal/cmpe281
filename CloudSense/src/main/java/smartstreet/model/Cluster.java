@@ -15,7 +15,7 @@ public class Cluster {
 	private int id;
 	private String clusterName ;
 	private String clusterDesc ;
-	private int clusterStatus  ;
+	private String clusterStatus  ;
 	private String clusterLatitude ;
 	private String clusterLongitude ;
 	private String clusterAddress ;
@@ -24,6 +24,8 @@ public class Cluster {
 	private String clusterCountry ;
 	private String clusterZip ;
 	private String installedBy ;
+	private String clusterBlock;
+	private List<Integer> nodeIdList;
 	private List<SmartNode> nodes;
 	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date installationDate  ;
@@ -32,6 +34,9 @@ public class Cluster {
 	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date lastMaintainedDate ;
 	private int smartnodeIdCount;
+	
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -50,10 +55,10 @@ public class Cluster {
 	public void setClusterDesc(String clusterDesc) {
 		this.clusterDesc = clusterDesc;
 	}
-	public int getClusterStatus() {
+	public String getClusterStatus() {
 		return clusterStatus;
 	}
-	public void setClusterStatus(int clusterStatus) {
+	public void setClusterStatus(String clusterStatus) {
 		this.clusterStatus = clusterStatus;
 	}
 	public String getClusterLatitude() {
@@ -140,5 +145,19 @@ public class Cluster {
 	public void setSmartnodeIdCount(int smartnodeIdCount) {
 		this.smartnodeIdCount = smartnodeIdCount;
 	}
+	public String getClusterBlock() {
+		return clusterBlock;
+	}
+	public void setClusterBlock(String clusterBlock) {
+		this.clusterBlock = clusterBlock;
+	}
+	public List<Integer> getNodeIdList() {
+		return nodeIdList;
+	}
+	public void setNodeIdList(List<Integer> nodeIdList) {
+		this.nodeIdList = nodeIdList;
+	}
+	
+	
 	
 }

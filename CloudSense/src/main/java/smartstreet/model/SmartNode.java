@@ -14,7 +14,7 @@ public class SmartNode {
 	private int id;
 	private String nodeName ;
 	private String nodeDesc ;
-	private int nodeStatus  ;
+	private String nodeStatus  ;
 	private String nodeLatitude ;
 	private String nodeLongitude ;
 	private String nodeAddress ;
@@ -22,6 +22,7 @@ public class SmartNode {
 	private String nodeState ;
 	private String nodeCountry ;
 	private String nodeZip ;
+	private String nodeBlock;
 	private String installedBy ;
 	private List<Integer> sensorList;
 	private List<Sensor> sensors;
@@ -31,6 +32,9 @@ public class SmartNode {
 	@DateTimeFormat(pattern = "mm/dd/yyyy")
 	private Date lastMaintainedDate ;
 	private int sensorIdCount;
+	
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -49,10 +53,10 @@ public class SmartNode {
 	public void setNodeDesc(String nodeDesc) {
 		this.nodeDesc = nodeDesc;
 	}
-	public int getNodeStatus() {
+	public String getNodeStatus() {
 		return nodeStatus;
 	}
-	public void setNodeStatus(int nodeStatus) {
+	public void setNodeStatus(String nodeStatus) {
 		this.nodeStatus = nodeStatus;
 	}
 	public String getNodeLatitude() {
@@ -138,6 +142,12 @@ public class SmartNode {
 	}
 	public void setSensorList(List<Integer> sensorList) {
 		this.sensorList = sensorList;
+	}
+	public String getNodeBlock() {
+		return nodeBlock;
+	}
+	public void setNodeBlock(String nodeBlock) {
+		this.nodeBlock = nodeBlock;
 	}
 	
 	

@@ -50,5 +50,7 @@ public interface IClusterDao {
 	public int getMappedSmartNodeCount(int clusterId) ;
 	public List<SmartNode> getUnmappedSmartNodeNames(int clusterId) ;
 
+	public void deleteClusterMapping(int clusterId);
+
 
 }

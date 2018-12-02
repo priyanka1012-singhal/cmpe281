@@ -68,18 +68,7 @@ public class SmartNodeDaoImpl implements ISmartNodeDao{
 	 * @return List of smartNodes
 	 */
 	public List<SmartNode> getAllSmartNodes() {
-		   String sql = "SELECT node.node_id, node.node_name, "
-				   		+ "node.node_status,"
-				   		+ "node.node_latitude,"
-				   		+ "node.node_longitude,"
-				   		+ "node.node_address,"
-				   		+ "node.node_city,"
-				   		+ "node.node_state,"
-				   		+ "node.node_zip,"
-				   		+ "node.installed_by,"
-				   		+ "node.installation_date,"
-				   		+ "node.last_maintained_by,"
-				   		+ "node.last_maintained_date"
+		   String sql = "SELECT *"
 		   		+ " FROM smart_node node";
 		   RowMapper<SmartNode> rowMapper = new SmartNodeRowMapper();		
 		   return this.jdbcTemplate.query(sql, rowMapper);
@@ -91,18 +80,7 @@ public class SmartNodeDaoImpl implements ISmartNodeDao{
 	 * @return
 	 */
 	public SmartNode getSmartNodeById(int smartNodeId) {
-		 String sql = "SELECT node.node_id, node_name, "
-			   		+ "node_status,"
-			   		+ "node_latitude,"
-			   		+ "node_longitude,"
-			   		+ "node_address,"
-			   		+ "node_city,"
-			   		+ "node_state,"
-			   		+ "node_zip,"
-			   		+ "installed_by,"
-			   		+ "installation_date,"
-			   		+ "last_maintained_by,"
-			   		+ "last_maintained_date"
+		 String sql = "SELECT *"
 	   		+ " FROM smart_node node where  node.node_id = ? ";
 		RowMapper<SmartNode> rowMapper = new SmartNodeRowMapper();		
 		SmartNode smartNode = jdbcTemplate.queryForObject(sql, rowMapper, smartNodeId);

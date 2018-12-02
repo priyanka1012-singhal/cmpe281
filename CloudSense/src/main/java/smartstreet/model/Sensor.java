@@ -17,7 +17,7 @@ public class Sensor {
 	private String deviceType;
 	private String sensorName ;
 	private String sensorDesc ;
-	private int sensorStatus  ;
+	private String sensorStatus  ;
 	private String sensorType ;
 	private String sensorFrequency ;
 	private String sensorProviderName ;
@@ -32,6 +32,7 @@ public class Sensor {
 	private String sensorState ;
 	private String sensorCountry ;
 	private String sensorZip ;
+	private String sensorBlock;
 	private int installedBy ;
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	private Date installationDate  ;
@@ -71,10 +72,10 @@ public class Sensor {
 	public void setSensorDesc(String sensorDesc) {
 		this.sensorDesc = sensorDesc;
 	}
-	public int getSensorStatus() {
+	public String getSensorStatus() {
 		return sensorStatus;
 	}
-	public void setSensorStatus(int sensorStatus) {
+	public void setSensorStatus(String sensorStatus) {
 		this.sensorStatus = sensorStatus;
 	}
 	public String getSensorType() {
@@ -189,6 +190,12 @@ public class Sensor {
 	public void setLastMaintainedDate(Date lastMaintainedDate) {
 		this.lastMaintainedDate = lastMaintainedDate;
 	}
+	public String getSensorBlock() {
+		return sensorBlock;
+	}
+	public void setSensorBlock(String sensorBlock) {
+		this.sensorBlock = sensorBlock;
+	}
 	
-
+	
 }
