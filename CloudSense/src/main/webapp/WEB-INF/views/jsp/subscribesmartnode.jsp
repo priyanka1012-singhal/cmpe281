@@ -9,8 +9,8 @@
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Manage Sensor</a></li>
-            <li class="active">View Sensor</li>
+            <li><a href="#">Manage Smart Node</a></li>
+            <li class="active">View Smart Node</li>
           </ol>
         </section>
 
@@ -26,9 +26,9 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Cluster Name</th>
-                        <th>Cluster Description</th>      
-                        <th>Cluster Address</th>  
+                        <th>Node Name</th>
+                        <th>Node Description</th>      
+                        <th>Node Address</th>  
                         <th>Installation Date</th> 
 						<th>View on map</th>                                                          
                         <th>#Edit</th>
@@ -42,13 +42,13 @@
 								<td>${snode.nodeDesc}</td>
 								<td>${snode.nodeAddress}</td>
 								<td>${snode.installationDate}</td>	
-								<td> <button class="mapview" onclick="showMap(${snode.nodeLongitude},${snode.nodeLatitude})">View On Map</button></td>
+								<td> <button class="mapview" onclick="showMap(${snode.nodeLongitude},${snode.nodeLatitude})"><i class="fa fa-map-marker" style="font-size:20px;color:red"></i>MapView</button></td>
 								<td>
-								<button class=edit onclick="window.open('/CloudSense/viewsensors/${snode.id}', '_self'); openForm()">List Sensors</button>							
+								<button class=edit onclick="window.open('${pageContext.request.contextPath}/viewsensors/${snode.id}', '_self'); openForm()">List Sensors</button>							
 								</td>
 								<td>
-								<button class="view" onclick="window.open('/CloudSense/searchsensor/${snode.id}', '_self')">Add Sensors</button>
-								<button class= "delete" onclick="window.open('/CloudSense/searchfordel/${snode.id}', '_self')">Delete Sensors</button>
+								<button class="view" onclick="window.open('${pageContext.request.contextPath}/searchsensor/${snode.id}', '_self')">Add Sensors</button>
+								<button class= "delete" onclick="window.open('${pageContext.request.contextPath}/searchfordel/${snode.id}', '_self')">Delete Sensors</button>
 								</td>							
 							</tr>
 						
