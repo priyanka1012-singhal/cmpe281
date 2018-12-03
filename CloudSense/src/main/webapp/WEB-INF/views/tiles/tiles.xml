@@ -143,7 +143,7 @@
        	<put-attribute name="body" value="/WEB-INF/views/jsp/sensorstationdashboard.jsp" />  
    </definition>
    
-    <definition name="subscribecluster" extends="sensor-base">  
+    <definition name="ibecluster" extends="sensor-base">  
        <put-attribute name="title" value="Subscribe Cluster" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/subscribecluster.jsp" />  
    </definition>
@@ -168,4 +168,17 @@
        <put-attribute name="title" value="Subscribe Sensor" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/subscribesensor.jsp" />  
    </definition> 
+      <!-- add sensor to Nodes for Sensor provider -->
+   <definition name="addsensortonode" extends="sensor-base">   
+        <put-attribute name="title" value="Add Sensor To Node" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/addsensortonode.jsp" />  
+   </definition>  
+     <!-- nodes with sensor page  sensor provider -->
+   <definition name="nodeswithsensor"  extends="sensor-base">   
+       <put-attribute name="title" value="Subscribe Smart Node" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/nodeswithsensor.jsp" /> 
+   </definition>      
+   
+   
+   
 </tiles-definitions>
