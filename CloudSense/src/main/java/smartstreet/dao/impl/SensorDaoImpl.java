@@ -1,5 +1,7 @@
 package smartstreet.dao.impl;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -119,5 +121,71 @@ public class SensorDaoImpl implements ISensorDao{
 		else 
 			return true;
 	}
+	/**
+	 * Get Sensor by Id
+	 * @param sensorId
+	 * @return
+	 */
+	public Sensor getSensorById(int sensorId) {
+		String sql = "SELECT * FROM sensor WHERE sensor_id = ?";
+		RowMapper<Sensor> rowMapper = new SensorRowMapper();		
+		Sensor article = jdbcTemplate.queryForObject(sql, rowMapper, sensorId);
+		return article;
+	} 
 
+	public  List<Sensor>  getSensorLongLat( String latitude, String longitude) {
+		
+		String sql = "SELECT sensor_name, sensor_type , sensor_status ,sensor_longitude, "
+		+ "sensor_latitude, sensor_address , sensor_desc FROM sensor where sensor_longitude =? and sensor_latitude=?";
+		 List<Sensor> sensorList=  jdbcTemplate.query(sql,  new Object[] { longitude, latitude }, new RowMapper<Sensor>() {
+		    	
+		        @Override
+		        public Sensor mapRow(ResultSet rs, int rowNum) throws SQLException {
+		            Sensor sensor = new Sensor();	    		
+		            sensor.setSensorName(rs.getString("sensor_name"));
+					sensor.setSensorType(rs.getString("sensor_type"));
+					sensor.setSensorStatus(rs.getString("sensor_status"));
+					sensor.setSensorDesc(rs.getString("sensor_desc"));
+					sensor.setSensorLongitude(rs.getString("sensor_longitude"));
+					sensor.setSensorLatitude(rs.getString("sensor_latitude"));
+					sensor.setSensorAddress(rs.getString("sensor_address"));		            
+		            return sensor;
+		        }
+		    });
+		 
+		    return sensorList;  
+	}	
+	
+	
+	public void updateNodeForSensor(String[]sensorList , int nodeId)
+	{		
+		for(int i = 0; i< sensorList.length; i++)
+		{
+			String sql = "update sensor set node_id =? where sensor_name=? ";
+			 jdbcTemplate.update(sql, nodeId, sensorList[i]);
+		}
+	}
+	
+	 public  List<Sensor> getSensorsForNode(int sNodeId)
+	 {
+		String sql = "SELECT sensor_name, sensor_desc, sensor_type, sensor_status, sensor_address ,sensor_longitude,"
+				+ "sensor_latitude from sensor where node_id=?";
+		 List<Sensor> sensorList=  jdbcTemplate.query(sql,  new Object[] { sNodeId}, new RowMapper<Sensor>() {
+		    	
+		        @Override
+		        public Sensor mapRow(ResultSet rs, int rowNum) throws SQLException {
+		            Sensor sensor = new Sensor();	    		
+		            sensor.setSensorName(rs.getString("sensor_name"));
+		            sensor.setSensorDesc(rs.getString("sensor_desc"));
+		            sensor.setSensorType(rs.getString("sensor_type"));
+		            sensor.setSensorStatus(rs.getString("sensor_status"));            
+		            sensor.setSensorAddress(rs.getString("sensor_address"));
+					sensor.setSensorLongitude(rs.getString("sensor_longitude"));
+					sensor.setSensorLatitude(rs.getString("sensor_latitude"));		
+		            return sensor;
+		        }
+		    });			 
+		 return sensorList; 		 
+	 }
+	
 }

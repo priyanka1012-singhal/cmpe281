@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
+Built-By: supriyajain
+Build-Jdk: 10.0.2
 Implementation-Title: CloudSense
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: priyankasinghal
 Implementation-Vendor-Id: smartstreet-iot
-Build-Jdk: 1.8.0_181
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/CloudSense
 Created-By: Maven Integration for Eclipse

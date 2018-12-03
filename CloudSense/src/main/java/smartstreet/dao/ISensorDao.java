@@ -2,6 +2,9 @@ package smartstreet.dao;
 
 import java.util.List;
 
+import org.springframework.jdbc.core.RowMapper;
+
+import smartstreet.dto.SensorRowMapper;
 import smartstreet.model.Sensor;
 
 public interface ISensorDao {
@@ -43,5 +46,14 @@ public interface ISensorDao {
 	 * @return
 	 */
 	boolean isExists(String sensorname);
-
+	
+	/**
+	 * Get Sensor by Id
+	 * @param sensorId
+	 * @return
+	 */
+	public Sensor getSensorById(int sensorId);
+	public  List<Sensor>  getSensorLongLat(String latitude, String longitude) ; 
+	public void updateNodeForSensor(String[]sensorList , int nodeId);
+	public  List<Sensor> getSensorsForNode(int sNodeId);
 }
