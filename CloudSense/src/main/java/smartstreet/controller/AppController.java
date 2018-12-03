@@ -131,7 +131,7 @@ public class AppController {
         return new ModelAndView("signin");        
     }
     //sensor station dashboard flow after login
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value ="/login", method = RequestMethod.POST)
 	public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response,
 	@ModelAttribute("login") Login login) 
 	{
@@ -204,5 +204,23 @@ public class AppController {
     	moView.addObject("snodeList", snodeList);
     	moView.setViewName("nodeswithsensor");
 		return moView;      
+    }   
+    //search sensor for deletion
+    @RequestMapping(value="/searchfordel/{id}",  method = RequestMethod.GET)  
+    public ModelAndView searchSensorForDel(@PathVariable("id") int snodeId){ 
+    	editnodeId = snodeId;
+    	ModelAndView moView = new ModelAndView();
+    	List<Sensor> sensorlist =sensorDao.getSensorsForNode(snodeId);
+    	moView.addObject("sensorlist", sensorlist);
+    	moView.addObject("node",  this.smNodeDao.getSmartNodeById(snodeId));
+    	moView.setViewName("deletesensorfromnode");
+		return moView;      
     }     
+    @RequestMapping(value="/delfromnode",  method = RequestMethod.POST)  
+    public ModelAndView delfromnode(@RequestParam("selectsensor")String[] checkboxValue){ 
+    	
+    	sensorDao.deleteNodeForSensor(checkboxValue, editnodeId);
+		return new ModelAndView("redirect:/subscribesmartnode");
+    	
+    }    
 }

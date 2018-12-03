@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- form start -->
-                <form:form role="form" action="node/add" method="post" modelAttribute="node">
+                <form:form role="form" action="${pageContext.request.contextPath}/node/add" method="post" modelAttribute="node">
                   <div class="box-body">
                   	
                      <!-- text input -->

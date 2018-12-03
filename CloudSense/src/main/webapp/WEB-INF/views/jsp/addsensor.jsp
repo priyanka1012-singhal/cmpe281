@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- form start -->
-                <form:form role="form" action="sensor/add" method="post" modelAttribute="sensor">
+                <form:form role="form" action="${pageContext.request.contextPath}/sensor/add" method="post" modelAttribute="sensor">
                   <div class="box-body">
                   	
                      <!-- text input -->

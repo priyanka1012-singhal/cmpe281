@@ -44,7 +44,7 @@
 								<td>${snode.installationDate}</td>	
 								<td> <button class="mapview" onclick="showMap(${snode.nodeLongitude},${snode.nodeLatitude})">View On Map</button></td>
 								<td>
-								<button class=edit onclick="window.open('/CloudSense/viewsensors/${snode.id}', '_self'); openForm()">List Sensors</button>							
+								<button class=edit onclick="window.open('${pageContext.request.contextPath}/viewsensors/${snode.id}', '_self'); openForm()">List Sensors</button>							
 								</td>
 								<td>
 								<button class="view" onclick="window.open('/CloudSense/searchsensor/${snode.id}', '_self')">Add Sensors</button>

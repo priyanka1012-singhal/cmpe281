@@ -178,7 +178,11 @@
        <put-attribute name="title" value="Subscribe Smart Node" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/nodeswithsensor.jsp" /> 
    </definition>      
-   
+     <!-- delete sensor to Nodes for Sensor provider -->
+      <definition name="deletesensorfromnode" extends="sensor-base">  
+       <put-attribute name="title" value="Subscribe Node" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/deletesensorfromnode.jsp" />  
+   </definition>       
    
    
 </tiles-definitions>

@@ -187,5 +187,12 @@ public class SensorDaoImpl implements ISensorDao{
 		    });			 
 		 return sensorList; 		 
 	 }
-	
+		public void deleteNodeForSensor(String[]sensorList , int nodeId)
+		{		
+			for(int i = 0; i< sensorList.length; i++)
+			{
+				String sql = "update sensor set node_id =? where sensor_name=? ";
+				 jdbcTemplate.update(sql, 0, sensorList[i]);
+			}
+		}	
 }

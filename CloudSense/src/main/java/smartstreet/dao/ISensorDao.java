@@ -56,4 +56,5 @@ public interface ISensorDao {
 	public  List<Sensor>  getSensorLongLat(String latitude, String longitude) ; 
 	public void updateNodeForSensor(String[]sensorList , int nodeId);
 	public  List<Sensor> getSensorsForNode(int sNodeId);
+	public void deleteNodeForSensor(String[]sensorList , int nodeId);
 }

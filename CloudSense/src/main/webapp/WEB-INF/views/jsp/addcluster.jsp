@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- form start -->
-                <form:form role="form" action="cluster/add" method="post" modelAttribute="cluster">
+                <form:form role="form" action="${pageContext.request.contextPath}/cluster/add" method="post" modelAttribute="cluster">
                   <div class="box-body">
                   	
                      <!-- text input -->

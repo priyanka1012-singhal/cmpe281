@@ -98,17 +98,7 @@
                 <div id="chartContainer1" style="height: 300px; width: 100%;"></div>		
             </div>
             </div>
-            
-           <div class="box box-primary">
-            <div class="box-header"> 
-            <i class="ion ion-clipboard"></i>             
-                 <h3 class="box-title">
-                    daily report  
-                  </h3>
-			<div id="chartContainer2" style="height: 370px; width: 100%;"></div>	
-            </div>
-            </div>            
-            
+           
             
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">

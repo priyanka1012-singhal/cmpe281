@@ -8,7 +8,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>CloudSense | Log in</title>
+    <title>CloudSense1 | Log in</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -30,11 +30,11 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="/index2.html"><b>SignIn</b> to </a><b>CloudSense</b>
+        <a href="/index2.html"><b>SignIn</b> to </a><b>CloudSense1</b>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="/CloudSense/login" method="POST">
+        <form action="${pageContext.request.contextPath}/login" method="POST">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Email" name= email required/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
