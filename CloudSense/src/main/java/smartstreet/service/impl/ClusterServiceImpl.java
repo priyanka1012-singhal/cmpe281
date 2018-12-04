@@ -47,6 +47,15 @@ public class ClusterServiceImpl implements IClusterService {
 		}
 		return list;
 	}
+	
+	@Override
+	public List<Cluster> getAllClusters(String streetname) {
+		List<Cluster> list = clusterDao.getAllClusters(streetname);
+		for(Cluster cluster:list) {
+			cluster.setSmartnodecount(clusterDao.getMappedSmartNodeCount(cluster.getId())) ;
+		}
+		return list;
+	}
 
 	@Override
 	public Cluster getClusterById(int clusterId) {

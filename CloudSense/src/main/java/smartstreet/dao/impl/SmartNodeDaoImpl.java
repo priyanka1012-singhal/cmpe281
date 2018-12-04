@@ -75,6 +75,18 @@ public class SmartNodeDaoImpl implements ISmartNodeDao{
 	}
 	
 	/**
+	 * Get List of smartNodes
+	 * @param streetname
+	 * @return List of smartNodes
+	 */
+	public List<SmartNode> getAllSmartNodes(String streetname) {
+		   String sql = "SELECT *"
+		   		+ " FROM smart_node node where node_address like ? OR node_zip like ? OR node_block like ?";
+		   RowMapper<SmartNode> rowMapper = new SmartNodeRowMapper();		
+		   return this.jdbcTemplate.query(sql, rowMapper, "%"+streetname+"%","%"+streetname+"%","%"+streetname+"%");
+	}
+	
+	/**
 	 * Get SmartNode by Id
 	 * @param smartNodeId
 	 * @return
@@ -148,14 +160,17 @@ public class SmartNodeDaoImpl implements ISmartNodeDao{
 			  String sql = "SELECT map.sensor_id, s.sensor_name, "
 				   		+ "s.device_id,"
 				   		+ "s.sensor_status,"
+				   		+ "s.sensor_desc,"
 				   		+ "s.device_type,"
 				   		+ "s.sensor_type,"
 				   		+ "s.sensor_latitude,"
+				   		+ "s.sensor_country,"
 				   		+ "s.sensor_longitude,"
 				   		+ "s.sensor_address,"
 				   		+ "s.sensor_city,"
 				   		+ "s.sensor_state,"
 				   		+ "s.sensor_zip,"
+				   		+ "s.sensor_block,"
 				   		+ "s.installed_by,"
 				   		+ "s.installation_date,"
 				   		+ "s.last_maintained_by,"

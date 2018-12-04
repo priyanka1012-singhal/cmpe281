@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import smartstreet.controller.SensorController;
 import smartstreet.dao.ISensorDao;
+import smartstreet.dto.Report;
 import smartstreet.model.Sensor;
 import smartstreet.service.ISensorService;
 import smartstreet.utiliy.GoogleMapHelper;
@@ -54,6 +55,15 @@ public class SensorServiceImpl implements ISensorService{
 	}
 	
 	/**
+	 * Get List of sensors by street name
+	 * @param streetname
+	 * @return List of sensors
+	 */
+	public List<Sensor> getAllSensors(String streetname) {
+		   return sensorDao.getAllSensors(streetname);
+	}
+	
+	/**
 	 * Get Sensor by Id
 	 * @param sensorId
 	 * @return
@@ -76,6 +86,18 @@ public class SensorServiceImpl implements ISensorService{
 	 */
 	public void deleteSensor(String sensorId) {
 		sensorDao.deleteSensor(sensorId);
+	}
+	
+	public List<Report> getreportbysensortype() {
+		   return sensorDao.getreportbysensortype();
+	}
+	
+	public List<Report> getreportbysensorstatus() {
+		   return sensorDao.getreportbysensorstatus();
+	}
+	
+	public List<Report> getreportbyblockname() {
+		   return sensorDao.getreportbyblockname();
 	}
 
 }

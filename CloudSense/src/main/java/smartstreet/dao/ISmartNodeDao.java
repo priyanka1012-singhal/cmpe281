@@ -75,5 +75,7 @@ public interface ISmartNodeDao {
 	 */
 	public List<Sensor> getUnMappedSensorNames(int nodeid);
 
+	public List<SmartNode> getAllSmartNodes(String streetname);
+
 
 }

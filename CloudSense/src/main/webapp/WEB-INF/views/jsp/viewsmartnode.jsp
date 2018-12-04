@@ -55,8 +55,7 @@
 						<td><c:out value="${data.installationDate}" /></td>
 						<td><c:out value="${data.lastMaintainedDate}" /></td>
 						
-						
-						<td> <button class="view" id="addsensor" onclick="ajaxGet(${data.id})">Add Sensor</button> <button class="edit"  onclick="window.open('/CloudSense/editnode/${data.id}', '_self')">Edit</button>
+						<td> <button class="view" id="addsensor" onclick="ajaxGet(${data.id})">Add Sensor</button> <button class="edit"  onclick="window.open('${pageContext.request.contextPath}/editnode/${data.id}', '_self')">Edit</button>
 								<button class= "delete" onclick="ajaxDelete(${data.id})">Delete</button> </td>
 						</tr>
 					</c:forEach>
@@ -70,7 +69,12 @@
             <div class="col-xs-12">
               <div class="box">
               <div class="box-body">
-                <div class="box-header"> Map View </div><!-- /.box-header -->
+                <div class="box-header bg-light-blue-gradient"> 
+                <i class="fa fa-map-marker"></i>
+                  <h3 class="box-title">
+                    Map View
+                  </h3> 
+                  </div><!-- /.box-header -->
     				<div id="map" style="width: 0px; height: 0px; "></div>
          		
        			</div><!-- /.box-body -->
@@ -114,7 +118,7 @@
     function ajaxGet(id) {
     			$.ajax({
     				type : "GET",
-    				url : "/CloudSense/viewsmartnode/node/"+id+"/getunmappedsensors",
+    				url : "${pageContext.request.contextPath}/viewsmartnode/node/"+id+"/getunmappedsensors",
     				success: function(result){
     					
     						var response = "<div class=\"form-group\"><label for=\"name\">Smart Node Name</label>"+
@@ -144,7 +148,7 @@
     function ajaxDelete(id){
 			$.ajax({
 				type : "GET",
-				url : "/CloudSense/node/"+id+"/delete",
+				url : "${pageContext.request.contextPath}/node/"+id+"/delete",
 				success: function(result){
 						location.reload();
 						console.log("Success: ", result);
@@ -282,7 +286,7 @@ function showMap(id) {
     }); */
 	$.ajax({
 		type : "GET",
-		url : "/CloudSense/node/"+id+"/getmappedsensors",
+		url : "${pageContext.request.contextPath}/node/"+id+"/getmappedsensors",
 		success: function(result){
 				
 			    var sensorMapInput = [];
@@ -291,13 +295,6 @@ function showMap(id) {
 				
 				$.each(result, function(i, val) {
 					sensorMapInput[i] = [parseFloat(val.sensorLatitude), parseFloat(val.sensorLongitude)];
-					//alert(val.sensorLatitude);
-/* 					  $.each(this, function(k, v) {
-					    /// do stuff]
-					    alert(k);
-					    alert(v);
-					    
-					  }); */
 				}); 
 				initMap(sensorMapInput,nodeMapInput,clusterMapInput);
 				console.log("Success: ", sensorMapInput);
@@ -328,7 +325,7 @@ function showMap(id) {
        
        
         $.ajax({
-            url: '/CloudSense/node/addsensors',
+            url: '${pageContext.request.contextPath}/node/addsensors',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',

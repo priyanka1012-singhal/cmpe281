@@ -40,7 +40,7 @@
 							<tr class="back">
 								<td>${sensor.sensorName}</td>
 								<td>${sensor.sensorType}</td>
-								<td> <button class="mapview" onclick="showMap(${sensor.sensorLongitude},${sensor.sensorLatitude})">View On Map</button></td>
+								<td> <button class="mapview" onclick="showMap(${sensor.sensorLongitude},${sensor.sensorLatitude})"><i class="fa fa-map-marker" style="font-size:30px;color:red"></i>mapview</button></td>
 								<td>${sensor.sensorStatus}</td>
 								<td>
 								<button class="delete"   onclick="window.open('${pageContext.request.contextPath}/subscribe/${sensor.id}', '_self')">Subscribe</button>
@@ -51,6 +51,7 @@
                   </table>
                 </div><!-- /.box-body -->
                 <div class="box-header">
+                <div class="box-body">
                 <h3 class="box-title">View On Map</h3>
                 </div><!-- /.box-header -->
                 <div class="maploc" id="showMap" style="width:500px;height:400px;"></div>

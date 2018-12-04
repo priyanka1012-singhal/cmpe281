@@ -52,7 +52,6 @@
                 <div class="box-header">
                   <!-- tools box -->
                   <div class="pull-right box-tools">
-                    <button class="btn btn-primary btn-sm daterange pull-right" data-toggle="tooltip" title="Date range"><i class="fa fa-calendar"></i></button>
                     <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip" title="Collapse" style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
                   </div><!-- /. tools -->
 
@@ -197,7 +196,7 @@
 window.addEventListener('load', function () {
 	$.ajax({
 		type : "GET",
-		url : "http://localhost:8080/CloudSense/getMapNodes",
+		url : "${pageContext.request.contextPath}/getMapNodes",
 		success: function(result){
 				
 			    var sensorMapInput = [];

@@ -53,7 +53,7 @@
 						<td><c:out value="${data.clusterAddress}" /></td>
 						<td><c:out value="${data.installationDate}" /></td>
 						<td><c:out value="${data.lastMaintainedDate}" /></td>
-						<td> <button type="button" id="addnode" class="view" data-toggle="modal" data-target="#contact-modal" onclick="ajaxGet(${data.id})">Add Node</button> <button class="edit"  onclick="window.open('/CloudSense/editcluster/${data.id}', '_self')">Edit</button>
+						<td> <button type="button" id="addnode" class="view" data-toggle="modal" data-target="#contact-modal" onclick="ajaxGet(${data.id})">Add Node</button> <button class="edit"  onclick="window.open('${pageContext.request.contextPath}/editcluster/${data.id}', '_self')">Edit</button>
 								<button class= "delete" onclick="ajaxDelete(${data.id})">Delete</button> </td>
 						
 					</tr>
@@ -110,7 +110,7 @@
     function ajaxGet(id) {
     			$.ajax({
     				type : "GET",
-    				url : "/CloudSense/cluster/"+id+"/getunmappednodes",
+    				url : "${pageContext.request.contextPath}/cluster/"+id+"/getunmappednodes",
     				success: function(result){
     					
     						var response = "<div class=\"form-group\"><label for=\"name\">Cluster Name</label>"+
@@ -140,7 +140,7 @@
     function ajaxDelete(id){
 			$.ajax({
 				type : "GET",
-				url : "/CloudSense/cluster/"+id+"/delete",
+				url : "${pageContext.request.contextPath}/cluster/"+id+"/delete",
 				success: function(result){
 						location.reload();
 						console.log("Success: ", result);
@@ -228,7 +228,7 @@
 function showMap(id) {
 	$.ajax({
 		type : "GET",
-		url : "/CloudSense/cluster/"+id+"/getmappednodes",
+		url : "${pageContext.request.contextPath}/cluster/"+id+"/getmappednodes",
 		success: function(result){
 				
 			    var sensorMapInput = [];
@@ -267,7 +267,7 @@ function showMap(id) {
        
        
         $.ajax({
-            url: '/CloudSense/cluster/addnodes',
+            url: '${pageContext.request.contextPath}/cluster/addnodes',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',

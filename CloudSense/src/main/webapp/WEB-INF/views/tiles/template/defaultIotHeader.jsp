@@ -1,8 +1,15 @@
-
-      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authentication var="principal" property="principal" />
       <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>IOT </b>Manager</a>
+        
+         <c:if test="${principal.username == 'sensorprovider'}">
+        	<a href="#" class="logo"><b>Sensor </b>Provider</a>
+        </c:if>
+         <c:if test="${principal.username == 'iotmanager'}">
+        	<a href=# class="logo"><b>IOT </b>Manager</a>
+        </c:if>        
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -128,16 +135,18 @@
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <img src='<c:url value="/dist/img/avatar.png"/>' class="user-image" alt="User Image"/>
-                  <span class="hidden-xs">XYZ</span>
+                  <span class="hidden-xs">
+                   <c:if test="${principal.username == 'sensorprovider'}">Emma Jane</c:if>
+                    <c:if test="${principal.username == 'iotmanager'}">Will Smith</c:if>
+                  </span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
                     <img src='<c:url value="/dist/img/avatar.png"/>' class="img-circle" alt="User Image" />
                     <p>
-                      XYZ
-                      <small>Member since Nov. 2018</small>
-                    </p>
+                      <c:if test="${principal.username == 'sensorprovider'}"><p>Emma Jane<small>Member since Nov. 2018</small></p></c:if>
+            		  <c:if test="${principal.username == 'iotmanager'}"><p>Will Smith<small>Member since Jan. 2018</small></p></c:if> 
                   </li>
                   <!-- Menu Footer-->
                   <li class="user-footer">
@@ -145,7 +154,7 @@
                       <a href="#" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
-                      <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                      <a href="${pageContext.request.contextPath}/logout" class="btn btn-default btn-flat">Sign out</a>
                     </div>
                   </li>
                 </ul>

@@ -47,6 +47,15 @@ public class SmartNodeServiceImpl implements ISmartNodeService{
 		}
 		return list;
 	}
+	
+	@Override
+	public List<SmartNode> getAllSmartNodes(String streetname) {
+		List<SmartNode> list = smartNodeDao.getAllSmartNodes(streetname);
+		for(SmartNode node:list) {
+			node.setSensorIdCount(smartNodeDao.getMappedSensorCount(node.getId())) ;
+		}
+		return list;
+	}
 
 	@Override
 	public SmartNode getSmartNodeById(int smartNodeId) {

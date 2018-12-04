@@ -49,4 +49,6 @@ public interface IClusterService {
 	public List<SmartNode> getMappedSmartNodes(int clusterId) ;
 	public List<SmartNode> getUnmappedSmartNodeNames(int clusterId);
 
+	List<Cluster> getAllClusters(String streetname);
+
 }

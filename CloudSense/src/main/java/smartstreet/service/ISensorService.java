@@ -2,6 +2,7 @@ package smartstreet.service;
 
 import java.util.List;
 
+import smartstreet.dto.Report;
 import smartstreet.model.Sensor;
 
 public interface ISensorService {
@@ -37,6 +38,18 @@ public interface ISensorService {
 	 * @param sensor
 	 */
 	public void deleteSensor(String sensorId);
+	/**
+	 * Get List of sensors by street name
+	 * @param streetname
+	 * @return List of sensors
+	 */
+	public List<Sensor> getAllSensors(String streetname);
+
+	List<Report> getreportbysensortype();
+
+	List<Report> getreportbyblockname();
+
+	List<Report> getreportbysensorstatus();
 	
 
 }

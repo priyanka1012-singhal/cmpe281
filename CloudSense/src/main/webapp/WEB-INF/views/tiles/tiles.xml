@@ -19,6 +19,12 @@
        	<put-attribute name="body" value="/WEB-INF/views/jsp/iotmanagerdashboard.jsp" />  
    </definition> 
    
+    <!-- View Infra street map for IOT Manager -->
+   <definition name="viewinfrastreetmap" extends="iot-base">  
+       <put-attribute name="title" value="View Infra street map" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/viewinfrastreetmap.jsp" />  
+   </definition> 
+   
     <!-- Add Sensor for IOT Manager -->
    <definition name="addsensor" extends="iot-base">  
        <put-attribute name="title" value="Add Sensor" />  
@@ -107,7 +113,13 @@
    <definition name="generatenergyusagereports" extends="iot-base">  
        <put-attribute name="title" value="Generate Energy Usage Report" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/generatenergyusagereports.jsp" />  
-   </definition>  
+   </definition>
+   
+    <!-- Generate Infra Reports for IOT Manager -->
+   <definition name="generateinfrareports" extends="iot-base">  
+       <put-attribute name="title" value="Generate Infra Report" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/generateinfrareports.jsp" />  
+   </definition>   
    
     <!-- Sign in page -->
    <definition name="signin"  template="/WEB-INF/views/jsp/signin.jsp">  
@@ -138,34 +150,51 @@
    </definition>  
    
    <!-- Sensor Station Dashboard Page -->
-   <definition name="sensorstationdashboard" extends="sensor-base">  
+   <definition name="sensorstationdashboard" extends="iot-base">  
        <put-attribute name="title" value="Dashboard" />  
        	<put-attribute name="body" value="/WEB-INF/views/jsp/sensorstationdashboard.jsp" />  
    </definition>
    
-    <definition name="subscribecluster" extends="sensor-base">  
+    <definition name="subscribecluster" extends="iot-base">  
        <put-attribute name="title" value="Subscribe Cluster" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/subscribecluster.jsp" />  
    </definition>
    
     <!-- nodes with sensor page  sensor provider -->
-   <definition name="nodeswithsensor" extends="sensor-base">  
+   <definition name="nodeswithsensor" extends="iot-base">  
        <put-attribute name="title" value="Edit Sensor" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/nodeswithsensor.jsp" /> 
    </definition>   
      <!-- nodes with sensor page  sensor provider -->
-   <definition name="subscribe" extends="sensor-base">  
+   <definition name="subscribe" extends="iot-base">  
        <put-attribute name="title" value="Subscribe Sensor" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/subscribe.jsp" /> 
    </definition> 
     <!-- subscribe Nodes for Sensor provider -->
-   <definition name="subscribesmartnode" extends="sensor-base">  
+   <definition name="subscribesmartnode" extends="iot-base">  
        <put-attribute name="title" value="Subscribe Node" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/subscribesmartnode.jsp" />  
    </definition>
  	<!-- Subscribe Sensor for Sensor provider -->
-   <definition name="subscribesensor" extends="sensor-base">  
+   <definition name="subscribesensor" extends="iot-base">  
        <put-attribute name="title" value="Subscribe Sensor" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/subscribesensor.jsp" />  
    </definition> 
+      <!-- add sensor to Nodes for Sensor provider -->
+   <definition name="addsensortonode" extends="iot-base">   
+        <put-attribute name="title" value="Add Sensor To Node" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/addsensortonode.jsp" />  
+   </definition>  
+     <!-- nodes with sensor page  sensor provider -->
+   <definition name="nodeswithsensor"  extends="iot-base">   
+       <put-attribute name="title" value="Subscribe Smart Node" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/nodeswithsensor.jsp" /> 
+   </definition>      
+     <!-- delete sensor to Nodes for Sensor provider -->
+      <definition name="deletesensorfromnode" extends="iot-base">  
+       <put-attribute name="title" value="Subscribe Node" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/deletesensorfromnode.jsp" />  
+   </definition>       
+   
+   
 </tiles-definitions>

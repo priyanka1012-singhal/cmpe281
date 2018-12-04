@@ -1,4 +1,8 @@
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+
+
+<sec:authentication var="principal" property="principal" />
       <!-- Left side column. contains the logo and sidebar -->
       <aside class="main-sidebar">
         <!-- sidebar: style can be found in sidebar.less -->
@@ -9,8 +13,8 @@
               <img src='<c:url value="/dist/img/avatar.png"/>' class="img-circle" alt="User Image" />
             </div>
             <div class="pull-left info">
-              <p>XYZ</p>
-
+            <c:if test="${principal.username == 'sensorprovider'}"><p>Emma Jane</p></c:if>
+            <c:if test="${principal.username == 'iotmanager'}"><p>Will Smith</p></c:if> 
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
@@ -28,10 +32,23 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
-              <a href="${pageContext.request.contextPath}/">
+               <c:if test="${principal.username == 'sensorprovider'}">
+               	<a href="${pageContext.request.contextPath}/dashboard">
+               </c:if>
+                <c:if test="${principal.username == 'iotmanager'}">
+              		<a href="${pageContext.request.contextPath}/iotdashboard">
+              	</c:if>	
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
               </a>
+              
             </li>
+            <c:if test="${principal.username == 'iotmanager'}">
+            <li class="treeview">
+              <a href="${pageContext.request.contextPath}/viewinfrastreetmap">
+                <i class="glyphicon glyphicon-map-marker"></i> <span>View Street Infrastructure</span>
+              </a>
+            </li>
+            </c:if>
              <li class="treeview">
               <a href="#">
                 <i class="fa fa-lightbulb-o"></i> <span>Manage Sensor</span> <i class="fa fa-angle-left pull-right"></i>
@@ -39,7 +56,7 @@
               <ul class="treeview-menu">
                	<li class="active"><a href="${pageContext.request.contextPath}/viewsensor"><i class="fa fa-circle-o"></i>View Sensors</a></li>
                 <li><a href="${pageContext.request.contextPath}/addsensor"><i class="fa fa-circle-o"></i>Add Sensor</a></li>
-             
+             	<c:if test="${principal.username == 'sensorprovider'}"> <li><a href="${pageContext.request.contextPath}/subscribesensor"><i class="fa fa-circle-o"></i>Subscribe Sensor</a></li></c:if>
               </ul>
             </li>
               <li class="treeview">
@@ -49,7 +66,7 @@
               <ul class="treeview-menu">
               	<li class="active"><a href="${pageContext.request.contextPath}/viewsmartnode"><i class="fa fa-circle-o"></i>View Smart Nodes</a></li>
                 <li><a href="${pageContext.request.contextPath}/addsmartnode"><i class="fa fa-circle-o"></i>Add Smart Node</a></li>
-               
+               	<c:if test="${principal.username == 'sensorprovider'}"> <li><a href="${pageContext.request.contextPath}/subscribesmartnode"><i class="fa fa-circle-o"></i>Subscribe Smart Node</a></li></c:if>
               </ul>
             </li>
              <li class="treeview">
@@ -59,9 +76,10 @@
               <ul class="treeview-menu">
               	<li class="active"><a href="${pageContext.request.contextPath}/viewcluster"><i class="fa fa-circle-o"></i>View Clusters</a></li>
                 <li><a href="${pageContext.request.contextPath}/addcluster"><i class="fa fa-circle-o"></i>Add Cluster</a></li>
-              
+              	<c:if test="${principal.username == 'sensorprovider'}">	 <li><a href="${pageContext.request.contextPath}/subscribecluster"><i class="fa fa-circle-o"></i>Subscribe Cluster</a></li></c:if>
               </ul>
             </li>
+             <c:if test="${principal.username == 'iotmanager'}">
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-tachometer"></i> <span>Monitor</span> <i class="fa fa-angle-left pull-right"></i>
@@ -72,13 +90,21 @@
                 <li><a href="#"><i class="fa fa-circle-o"></i>Generate Bill & Statements</a></li>
               </ul>
             </li>
+            </c:if>
             <li class="treeview">
               <a href="#">
                 <i class="fa fa-bar-chart-o"></i> <span>Generate Reports</span>
               </a>
-               <ul class="treeview-menu">
-              	<li><a href="${pageContext.request.contextPath}/sensordata/view"><i class="fa fa-circle-o"></i>View Sensor Data</a></li>
-              </ul>
+               <c:if test="${principal.username == 'iotmanager'}">
+               		<ul class="treeview-menu">
+              			<li><a href="${pageContext.request.contextPath}/generateinfrareports"><i class="fa fa-circle-o"></i>Generate Infrastructure Report</a></li>
+              		</ul>
+              	</c:if>
+              	<c:if test="${principal.username == 'sensorprovider'}">
+              		<ul class="treeview-menu">
+              			<li><a href="${pageContext.request.contextPath}/sensordata/view"><i class="fa fa-circle-o"></i>View Sensor Data</a></li>
+              		</ul>
+              	</c:if>
            </li>
           </ul>
         </section>

@@ -21,7 +21,7 @@
               <div class="box">
                 <div class="box-body">
                 <h3>Select sensor start and end time</h3>
-                 <form role="form" action="/CloudSense/activatesensor"  method="POST">
+                 <form role="form" action="${pageContext.request.contextPath}/activatesensor"  method="POST">
                   <div class="box-body">
                      <!-- text input -->
                     <div class="form-group">               

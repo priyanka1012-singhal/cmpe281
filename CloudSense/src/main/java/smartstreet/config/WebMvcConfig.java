@@ -7,6 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.data.mongodb.MongoDbFactory;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.SimpleMongoDbFactory;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -16,6 +19,9 @@ import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
  
 @Configuration
 @EnableWebMvc
@@ -100,7 +106,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     * @return MongoDbFactory
     */
    
-  /* @Bean
+  /*@Bean
    public MongoDbFactory mongoDbFactory(){
 	
 	   MongoClientURI uri = new MongoClientURI(
@@ -118,7 +124,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     * @return MongoTemplate
     */
    
-  /* @Bean
+  /*@Bean
    public MongoTemplate mongoTemplate() {
 	   return new MongoTemplate(mongoDbFactory());
    }*/

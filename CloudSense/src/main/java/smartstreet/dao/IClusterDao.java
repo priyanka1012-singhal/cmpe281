@@ -52,5 +52,7 @@ public interface IClusterDao {
 
 	public void deleteClusterMapping(int clusterId);
 
+	public List<Cluster> getAllClusters(String streetname);
+
 
 }

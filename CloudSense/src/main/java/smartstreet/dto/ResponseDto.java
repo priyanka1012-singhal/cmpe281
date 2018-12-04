@@ -15,6 +15,7 @@ public class ResponseDto {
 	List<SmartNode> smartnodes ;
 	List<Sensor> sensors;
 	List<Cluster> clusters;
+	String name;
 	
 	public List<SmartNode> getSmartnodes() {
 		return smartnodes;
@@ -33,6 +34,12 @@ public class ResponseDto {
 	}
 	public void setClusters(List<Cluster> clusters) {
 		this.clusters = clusters;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

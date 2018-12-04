@@ -379,40 +379,104 @@
       
       
 <script>
-window.onload = function () 
-{
-   var locations = [
-	      ['63rd Street Weather Station', 41.780992, -87.572619, 1],
-	      ['63rd Street Weather Station', 41.120993, -87.534619, 1],
-	      ['63rd Street Weather Station', 42.120993, -88.534619, 1],
-	      ['Oak Street Weather Station', 41.901997, -87.622817, 1],
-	      ['Oak Street Weather Station', 43.901997, -87.622817, 1],
-	      ['Foster Weather Station', 41.976464, -87.647525, 1]	
-	      
-	    ];
-  
-    var map = new google.maps.Map(document.getElementById('showMap'), {
-      zoom: 8,
-      center: new google.maps.LatLng(41.969094, -87.638003),
-      
-    });
-  
-   var infowindow = new google.maps.InfoWindow();
-  
-   var marker, i;
+window.addEventListener('load', function () {
+	$.ajax({
+		type : "GET",
+		url : "${pageContext.request.contextPath}/getMapNodes",
+		success: function(result){
+				
+			    var sensorMapInput = [];
+			    var nodeMapInput = [];
+			    var clusterMapInput = [];
+		
+				$.each(result.sensors, function(i, sensor) {
+					sensorMapInput[i] = [parseFloat(sensor.sensorLatitude), parseFloat(sensor.sensorLongitude)];
+				}); 
+				$.each(result.smartnodes, function(i, node) {
+					nodeMapInput[i] = [parseFloat(node.nodeLatitude), parseFloat(node.nodeLongitude)];
+				});
+				$.each(result.clusters, function(i, cluster) {
+					clusterMapInput[i] = [parseFloat(cluster.clusterLatitude), parseFloat(cluster.clusterLongitude)];
+				});
+				initMap(sensorMapInput,nodeMapInput,clusterMapInput);
+				console.log("Success: ", sensorMapInput);
+				
+		},
+		error : function(e) {
+			console.log("ERROR: ", e);
+		}
+	});
+	 
+}, false);
 
-   for (i = 0; i < locations.length; i++) 
-   { 
-     marker = new google.maps.Marker({
-       position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-       map: map
-     });
-     google.maps.event.addListener(marker, 'click', (function(marker, i) {
+function initMap(sensorlocations, nodelocations, clusterlocations) {
+	
+	 var iconBase = 'http://maps.google.com/mapfiles/ms/icons/';
+    var icons = {
+      smartnode: {
+        icon: iconBase + 'green-dot.png'
+      },
+      cluster: {
+        icon: iconBase + 'blue-dot.png'
+      },
+      sensor: {
+        icon: iconBase + 'red-dot.png'
+      }
+    };
+	
+   if (sensorlocations instanceof Array || nodelocations instanceof Array || clusterlocations instanceof Array ) {
+	   console.log("Success: ", sensorlocations);
+   	var features = [];
+   	for (i = 0; i < sensorlocations.length; i++) { 
+   		features.push(  {
+               position: new google.maps.LatLng(sensorlocations[i][0], sensorlocations[i][1]),
+               type: 'sensor'
+             });
+   	}
+   	
+   	for (i = 0; i < nodelocations.length; i++) { 
+   		features.push(  {
+               position: new google.maps.LatLng(nodelocations[i][0], nodelocations[i][1]),
+               type: 'smartnode'
+             });
+   	}
+   	
+   	for (i = 0; i < clusterlocations.length; i++) { 
+   		features.push(  {
+               position: new google.maps.LatLng(clusterlocations[i][0], clusterlocations[i][1]),
+               type: 'cluster'
+             });
+   	}
+   	
+   	
+
+  	    var centerOfMap = {lat: sensorlocations[0][0], lng: sensorlocations[0][1]};
+       // The map, centered at Uluru
+       var map = new google.maps.Map(
+       document.getElementById('showMap'), {zoom: 8, center: centerOfMap});
+
+       // The marker, positioned at center
+       var marker, i;
+
+       // var marker = new google.maps.Marker({position: center, map: map});
+
+       // Create markers.
+   	features.forEach(function(feature) { 
+       marker = new google.maps.Marker({
+       	position: feature.position,
+           icon: icons[feature.type].icon,
+           map: map
+       });
+
+       google.maps.event.addListener(marker, 'click', (function(marker, i) {
          return function() {
-           infowindow.setContent(locations[i][0]);
+           infowindow.setContent(marker.getPosition());
            infowindow.open(map, marker);
          }
        })(marker, i));
+     });
+   } else {
+       return 0;
    }
    
    

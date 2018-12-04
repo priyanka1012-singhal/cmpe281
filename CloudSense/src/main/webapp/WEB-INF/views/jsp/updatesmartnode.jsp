@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- form start -->
-                <form:form role="form" action="/CloudSense/node/update" method="POST" modelAttribute="node">
+                <form:form role="form" action="${pageContext.request.contextPath}/node/update" method="POST" modelAttribute="node">
                   <div class="box-body">
                   	 <div class="form-group">
                       <label>Smart Node Id</label>

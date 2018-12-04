@@ -51,4 +51,6 @@ public interface ISmartNodeService {
 
 	public List<Sensor> getUnMappedSensorNames(int id);
 
+	List<SmartNode> getAllSmartNodes(String streetname);
+
 }
