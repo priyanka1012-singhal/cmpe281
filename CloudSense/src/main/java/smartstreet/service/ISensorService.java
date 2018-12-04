@@ -45,11 +45,11 @@ public interface ISensorService {
 	 */
 	public List<Sensor> getAllSensors(String streetname);
 
-	List<Report> getreportbysensortype();
+	public List<Report> getreportbysensortype();
 
-	List<Report> getreportbyblockname();
+	public List<Report> getreportbyblockname();
 
-	List<Report> getreportbysensorstatus();
+	public List<Report> getreportbysensorstatus();
 	
 
 }

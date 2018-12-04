@@ -70,7 +70,6 @@ public class ClusterDaoImpl implements IClusterDao{
    return this.jdbcTemplate.query(sql, rowMapper);
 	}
 	
-	@Override
 	public List<Cluster> getAllClusters(String streetname) {
 		String sql = "SELECT *"
    		+ " FROM cluster_node cluster where cluster_address like ? OR cluster_zip like ? OR cluster_block like ?";
