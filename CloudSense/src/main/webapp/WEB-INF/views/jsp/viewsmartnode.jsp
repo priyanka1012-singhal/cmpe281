@@ -374,7 +374,7 @@ border-radius: 7px;
 font-family: Arial;
 font-weight:bold;
 width: 100%;
-height: 100%;
+height: 30px;
 }
  </style>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC25YLyuryOygu1l8aI8N6mTASid2wJ-Mo&callback=showMap"></script>  

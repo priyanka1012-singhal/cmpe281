@@ -85,7 +85,7 @@
                     See all sensors  
                   </div>	
                   
-               	  <div id="showMap" style="width:750px;height:500px;"></div>	
+               	  <div id="showMap" style="width:700px;height:500px;"></div>	
             	
             </div>                  
            </div>
@@ -503,8 +503,11 @@ function initMap(sensorlocations, nodelocations, clusterlocations) {
 				
 				indexLabel: "{label} {y}",
 				dataPoints: [
-					{y: 7, label: "Active"},
+					{y: 2, label: "Active"},
 					{y: 2, label: "Inactive"},
+					{y: 1, label: "Turn On"},
+					{y: 1, label: "Turn Off"},
+					{y: 1, label: "Maintenance"},
 				]
 			}]
 		});

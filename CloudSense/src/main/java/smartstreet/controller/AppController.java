@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import smartstreet.dao.IClusterDao;
 import smartstreet.dao.ISensorDao;
 import smartstreet.dao.ISmartNodeDao;
+import smartstreet.dao.impl.ClusterDaoImpl;
 import smartstreet.dao.impl.SensorDaoImpl;
 import smartstreet.dao.impl.SmartNodeDaoImpl;
 import smartstreet.dao.impl.UserDaoImpl;
@@ -47,7 +49,8 @@ public class AppController {
 	ISmartNodeService smartNodeService;
 	@Autowired
 	IClusterService clusterService;
-
+	@Autowired
+	IClusterDao clusterDao = new ClusterDaoImpl();
 	@Autowired
 	UserDaoImpl uDaoImpl = new UserDaoImpl();	
 	@Autowired
@@ -295,5 +298,61 @@ public class AppController {
     	sensorDao.updateSensor(sensor);  
         return new ModelAndView("redirect:/viewsensor");  
     }     
+
+	//add node post mapping
+    @RequestMapping(value = "/savecluster", method = RequestMethod.POST)
+    public ModelAndView addCluster(@ModelAttribute("cluster") Cluster cluster) throws Exception {
+    	clusterDao.addCluster(cluster);
+        return new ModelAndView("redirect:addcluster/");     
+    }
+    @RequestMapping(value = { "/viewcluster"}, method = RequestMethod.GET)
+    public ModelAndView viewcluster(ModelAndView model) {
+		List<Cluster> clusterList = clusterDao.getAllClusters();
+		model.addObject("clusterList", clusterList);
+		model.setViewName("viewcluster");
+		return model;
+    }
+	@RequestMapping(value = { "/subscribecluster"}, method = RequestMethod.GET)
+    public ModelAndView subscribeCluster(ModelAndView model) {
+		List<Cluster> clusterList = clusterDao.getAllClusters();	
+		model.addObject("clusterList", clusterList);
+		model.setViewName("subscribecluster");
+		return model;
+    }
+    @RequestMapping(value="/searchnodes/{id}",  method = RequestMethod.GET)  
+    public ModelAndView searchNodes(@PathVariable("id") int clusterId){ 
+    	editClusterId = clusterId;
+    	ModelAndView moView = new ModelAndView();
+    	List<SmartNode> snodeList = smNodeDao.getAllSmartNodes();
+    	moView.addObject("snodeList", snodeList);
+    	moView.addObject("cluster",  this.clusterDao.getClusterById(clusterId));
+    	moView.setViewName("addnodetocluster");
+		return moView;      
+    }	
+    @RequestMapping(value="/addtocluster",  method = RequestMethod.POST)  
+    public ModelAndView addToCluster(@RequestParam("selectnode")String[] checkboxValue){     	
+    	sensorDao.updateNodeForSensor(checkboxValue, editnodeId);
+		return new ModelAndView("redirect:/subscribecluster");
+    	
+    } 
+    @RequestMapping(value="/editcluster/{id}",  method = RequestMethod.GET)  
+    public ModelAndView editClusterPage(@PathVariable("id") int clusterId){ 
+    	editClusterId = clusterId;
+    	ModelAndView moView = new ModelAndView();
+    	moView.addObject("cluster",  this.clusterDao.getClusterById(clusterId));
+    	moView.setViewName("editcluster");
+		return moView;      
+    } 
     
+    @RequestMapping(value="/updatecluster",method = RequestMethod.POST)  
+    public ModelAndView updateCluster( @ModelAttribute("cluster") Cluster cluster){ 
+    	cluster.setId(editClusterId);
+    	clusterDao.updateCluster(cluster);
+        return new ModelAndView("redirect:/viewcluster");  
+    } 
+	@RequestMapping(value = "/deletecluster/{id}", method = RequestMethod.GET)
+    public String deleteCluster(@PathVariable("id") int clusterId){	
+        this.clusterDao.deleteCluster(clusterId);
+        return "redirect:/viewcluster";
+    }    
 }
