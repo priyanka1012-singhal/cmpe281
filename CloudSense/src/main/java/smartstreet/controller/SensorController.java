@@ -57,11 +57,11 @@ public class SensorController {
 		return new ModelAndView("viewsensor","sensorList",sensorList);
 	}
 	
-	@GetMapping("/editsensor/{id}")
+	/*@GetMapping("/editsensor/{id}")
 	public ModelAndView edit(@PathVariable("id") String id) {
 		Sensor sensor= sensorService.getSensorById(id);
 		return new ModelAndView("updatesensor", "sensor",sensor);
-	}
+	}*/
 	
 	@GetMapping("/sensor/{id}/delete")
 	public ModelAndView deleteSensor(@PathVariable("id") String id) {

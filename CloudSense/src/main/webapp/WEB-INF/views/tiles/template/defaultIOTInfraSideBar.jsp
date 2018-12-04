@@ -87,7 +87,7 @@
                 <i class="fa fa-tachometer"></i> <span>Monitor</span> <i class="fa fa-angle-left pull-right"></i>
               </a>
                <ul class="treeview-menu">
-                <li class="active"><a href="${pageContext.request.contextPath}/viewenergyusage"><i class="fa fa-circle-o"></i>Energy Usage</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/generatenergyusagereports"><i class="fa fa-circle-o"></i>Energy Usage</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Alarms & Operations</a></li>
                 <li><a href="#"><i class="fa fa-circle-o"></i>Generate Bill & Statements</a></li>
               </ul>

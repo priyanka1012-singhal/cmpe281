@@ -56,7 +56,7 @@
 						<td><c:out value="${data.lastMaintainedDate}" /></td>
 						
 						<td> <button class="view" id="addsensor" onclick="ajaxGet(${data.id})">Add Sensor</button> <button class="edit"  onclick="window.open('${pageContext.request.contextPath}/editnode/${data.id}', '_self')">Edit</button>
-								<button class= "delete" onclick="ajaxDelete(${data.id})">Delete</button> </td>
+					<button class= "delete" onclick="ajaxDelete(${data.id})">Delete</button> </td>
 						</tr>
 					</c:forEach>
                       </tbody>
@@ -374,7 +374,7 @@ border-radius: 7px;
 font-family: Arial;
 font-weight:bold;
 width: 100%;
-height: 100%;
+height: 30px;
 }
  </style>
 <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC25YLyuryOygu1l8aI8N6mTASid2wJ-Mo&callback=showMap"></script>  

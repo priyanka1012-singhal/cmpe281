@@ -334,6 +334,6 @@ border-radius: 7px;
 font-family: Arial;
 font-weight:bold;
 width: 100%;
-height: 100%;
+height: 30px;
 }
  </style>

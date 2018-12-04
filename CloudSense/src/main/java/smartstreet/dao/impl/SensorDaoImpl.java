@@ -134,10 +134,32 @@ public class SensorDaoImpl implements ISensorDao{
 	 * Update sensor
 	 * @param sensor
 	 */
-	public void updateSensor(Sensor sensor) {
+	/*public void updateSensor(Sensor sensor) {
 	    String sql = "UPDATE sensor SET sensor_status=? WHERE sensor_id=?";
 	    jdbcTemplate.update(sql, sensor.getSensorStatus(), sensor.getId());
-	} 
+	} /*
+	
+	/**
+	 * Update sensor
+	 * @param sensor
+	 */
+	public void updateSensor(Sensor sensor) {
+		MapHelper gMapHelper = new MapHelper();
+		String response = gMapHelper.getGeoLocation(sensor.getSensorAddress() + "," +sensor.getSensorCity()+","+sensor.getSensorZip());
+		String[] longlat = gMapHelper.parseLocationResponse(response);	
+	
+		String sql = "UPDATE sensor SET sensor_name = ? , sensor_frequency=? ,"
+	    		+ "sensor_desc=?, sensor_status=?, sensor_type=?,"
+	    		+ "sensor_address=?, sensor_city=?, sensor_state=?,sensor_country=?,"
+	    		+ "sensor_zip=?  , last_maintained_date=? ,"
+	    		+ "sensor_latitude=? , sensor_longitude=? WHERE sensor_id=?";
+	    jdbcTemplate.update(sql, sensor.getSensorName(),
+	    		sensor.getSensorFrequency(), sensor.getSensorDesc(), sensor.getSensorStatus(),
+	    		sensor.getSensorType(), sensor.getSensorAddress(), sensor.getSensorCity(),
+	    		sensor.getSensorState(), sensor.getSensorCountry(), sensor.getSensorZip(),
+	    	    sensor.getLastMaintainedDate(), longlat[0], longlat[1], sensor.getId());
+	} 		
+	
 	
 	/**
 	 * Delete sensor

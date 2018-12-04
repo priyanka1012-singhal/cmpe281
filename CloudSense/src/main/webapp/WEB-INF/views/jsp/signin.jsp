@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
-
 <body onload='document.loginForm.username.focus();'>
     <h1>Spring Security 5 - Login Form</h1>
  
@@ -25,3 +24,4 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </form>
 </body>
+</html>

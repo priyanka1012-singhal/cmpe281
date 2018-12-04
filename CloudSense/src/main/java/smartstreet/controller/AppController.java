@@ -59,7 +59,7 @@ public class AppController {
 
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String homePage(ModelMap model) {
-		return "iotdashboard";
+		return "signin";
 	}
 
 	@RequestMapping(value = { "/dashboard" }, method = RequestMethod.GET)
@@ -80,6 +80,8 @@ public class AppController {
         	return "iotmanagerdashboard";
         else if(name.equals("sensorprovider"))
         	return "sensorstationdashboard";
+        else if (name.equals("user"))
+        	return "userdashboard";
         else
         	return "iotmanagerdashboard";
 	}
@@ -282,4 +284,21 @@ public class AppController {
 		return new ModelAndView("redirect:/subscribesmartnode");
     	
     }    
+    
+    //Deekshitha's changes
+    @RequestMapping(value = { "/userdashboard"}, method = RequestMethod.GET)
+    public String userdashboard(ModelMap model) {
+        return "userdashboard";
+    }
+    
+    @RequestMapping(value = { "/energygraph"}, method = RequestMethod.GET)
+    public String energygraph(ModelMap model) {
+        return "energygraph";
+    }
+    
+    
+    @RequestMapping(value = { "/sensorstationreport"}, method = RequestMethod.GET)
+    public String sensorstationreport(ModelMap model) {
+        return "sensorstationreport";
+    }
 }

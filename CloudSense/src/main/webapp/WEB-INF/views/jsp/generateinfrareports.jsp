@@ -47,8 +47,7 @@
         	<div class="col-xs-12">
               <div class="box">
               <div class="box-body">
-                <div class="box-header bg-light-blue-gradient"> 
-                <i class="fa fa-map-marker"></i>
+                <div class="box-header"> 
                   <h3 class="box-title">
                     Reports
                   </h3> 
@@ -67,7 +66,7 @@
 	  
 	   	var chartData = [];
 	   		$.ajax({
-	    	        url: '/CloudSense/getreportbysensortype',
+	    	        url: '${pageContext.request.contextPath}/getreportbysensortype',
 	    	        type: 'GET',
 	    	        success : function(data) {
 	    	      		
@@ -115,7 +114,7 @@
 		  
 		   	var chartData = [];
 		   		$.ajax({
-		    	        url: '/CloudSense/getreportbysensorstatus',
+		    	        url: '${pageContext.request.contextPath}/getreportbysensorstatus',
 		    	        type: 'GET',
 		    	        success : function(data) {
 		    	      		
@@ -162,7 +161,7 @@
 		  
 		   	var chartData = [];
 		   		$.ajax({
-		    	        url: '/CloudSense/getreportbyblockname',
+		    	        url: '${pageContext.request.contextPath}/getreportbyblockname',
 		    	        type: 'GET',
 		    	        success : function(data) {
 		    	      		

@@ -197,6 +197,27 @@
       <definition name="deletesensorfromnode" extends="iot-base">  
        <put-attribute name="title" value="Subscribe Node" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/deletesensorfromnode.jsp" />  
+   </definition> 
+   <!--  Deekshitha -->
+       <!-- User Dashboard Page -->
+   <definition name="userdashboard" extends="iot-base">  
+       <put-attribute name="title" value="User Dashboard" />    
+       <put-attribute name="body" value="/WEB-INF/views/jsp/userdashboard.jsp" />  
+   </definition> 
+   
+   
+   
+    <!-- Energy Dashboard Page -->
+   <definition name="energygraph" extends="iot-base">  
+       <put-attribute name="title" value="Energy Graph" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/energygraph.jsp" />  
+   </definition> 
+   
+   
+   
+   <definition name="sensorstationreport" extends="iot-base" >  
+       <put-attribute name="title" value="sensorstationreport" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/sensorstationreport.jsp" />  
    </definition>       
    
    
