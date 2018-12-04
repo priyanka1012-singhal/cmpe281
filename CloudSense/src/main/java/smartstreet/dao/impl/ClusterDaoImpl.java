@@ -31,7 +31,8 @@ public class ClusterDaoImpl implements IClusterDao{
 
 	@Override
 	public void addCluster(Cluster cluster) {
-		String sql = "INSERT INTO cluster_node (cluster_name, "
+		String sql = "INSERT INTO cluster_node ("
+				+ "cluster_name, "
 		   		+ "cluster_status,"
 		   		+ "cluster_latitude,"
 		   		+ "cluster_longitude,"
@@ -78,13 +79,27 @@ public class ClusterDaoImpl implements IClusterDao{
 	return smartNode;
 	}
 
-	@Override
+	/*@Override
 	public void updateCluster(Cluster cluster) {
 		String sql = "UPDATE cluster_node SET cluster_status=? WHERE cluster_id=?";
 	    jdbcTemplate.update(sql, cluster.getClusterStatus(), cluster.getId());
 		
+	}*/
+	@Override
+	public void updateCluster(Cluster cluster) {
+		MapHelper gMapHelper = new MapHelper();
+		String response = gMapHelper.getGeoLocation(cluster.getClusterAddress() + "," +cluster.getClusterCity()+","+cluster.getClusterZip());
+		String[] longlat = gMapHelper.parseLocationResponse(response);	
+	
+		String sql = "UPDATE cluster_node SET cluster_name = ?,cluster_desc=?, cluster_status=?, cluster_latitude=?,"
+				+ "cluster_longitude=? , cluster_address=?, cluster_city=?, cluster_state=?,cluster_country=?,"
+	    		+ "cluster_zip=? , last_maintained_by=? , last_maintained_date=? WHERE cluster_id=?";
+	    jdbcTemplate.update(sql, cluster.getClusterName(), cluster.getClusterDesc(), cluster.getClusterStatus(),
+	    		longlat[0],  longlat[1], cluster.getClusterAddress(), 
+	    		cluster.getClusterCity(),cluster.getClusterState(), cluster.getClusterCountry(), cluster.getClusterZip(),
+	    		"XYZ", cluster.getLastMaintainedDate(),  cluster.getId());		
+		
 	}
-
 	@Override
 	public void deleteCluster(int clusterId) {
 		String sql = "DELETE FROM cluster_node WHERE cluster_id=?";

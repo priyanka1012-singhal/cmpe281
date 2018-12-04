@@ -63,7 +63,7 @@ private final static Logger logger = Logger.getLogger(SensorController.class.get
         logger.info("Exit addCluster");
             return new ModelAndView("viewcluster","clusterList",clusterList);
 	}
-	@PutMapping("/cluster/update")
+	@PostMapping("/cluster/update")
 	public ModelAndView updateCluster(@ModelAttribute("cluster") Cluster cluster, BindingResult result) {
 		clusterService.updateCluster(cluster);
 		List<Cluster> clusterList = clusterService.getAllClusters();

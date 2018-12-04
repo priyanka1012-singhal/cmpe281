@@ -114,7 +114,7 @@
     function ajaxGet(id) {
     			$.ajax({
     				type : "GET",
-    				url : "/CloudSense/viewsmartnode/node/"+id+"/getunmappedsensors",
+    				url : "${pageContext.request.contextPath}/viewsmartnode/node/"+id+"/getunmappedsensors",
     				success: function(result){
     					
     						var response = "<div class=\"form-group\"><label for=\"name\">Smart Node Name</label>"+
@@ -144,7 +144,7 @@
     function ajaxDelete(id){
 			$.ajax({
 				type : "GET",
-				url : "/CloudSense/node/"+id+"/delete",
+				url : "${pageContext.request.contextPath}/node/"+id+"/delete",
 				success: function(result){
 						location.reload();
 						console.log("Success: ", result);

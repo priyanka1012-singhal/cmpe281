@@ -32,6 +32,8 @@ public class SmartNodeRowMapper implements RowMapper<SmartNode> {
 		node.setNodeCity(row.getString("node_city"));
 		node.setNodeState(row.getString("node_state"));
 		node.setNodeZip(row.getString("node_zip"));
+		node.setInstalledBy(row.getString("installed_by"));
+		node.setLastMaintainedBy(row.getString("last_maintained_by"));
 		
 		return node;
 	   }

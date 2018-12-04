@@ -197,7 +197,7 @@
 window.addEventListener('load', function () {
 	$.ajax({
 		type : "GET",
-		url : "http://localhost:8080/CloudSense/getMapNodes",
+		url : "${pageContext.request.contextPath}/getMapNodes",
 		success: function(result){
 				
 			    var sensorMapInput = [];

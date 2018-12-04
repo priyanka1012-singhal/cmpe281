@@ -33,8 +33,10 @@ public class SensorDaoImpl implements ISensorDao{
 		   String sql = "INSERT INTO sensor (sensor_name, "
 		   		+ "device_id,"
 		   		+ "sensor_status,"
+		   		+ "sensor_desc,"
 		   		+ "device_type,"
 		   		+ "sensor_type,"
+		   		+ "sensor_frequency,"
 		   		+ "sensor_latitude,"
 		   		+ "sensor_longitude,"
 		   		+ "sensor_address,"
@@ -42,17 +44,21 @@ public class SensorDaoImpl implements ISensorDao{
 		   		+ "sensor_state,"
 		   		+ "sensor_country,"
 		   		+ "sensor_zip,"
+		   		+ "sensor_block,"
 		   		+ "installed_by,"
 		   		+ "installation_date,"
 		   		+ "last_maintained_by,"
-		   		+ "last_maintained_date"
-		   		+ ") values (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?,?, ?)";
+		   		+ "last_maintained_date,"
+		   		+ "sensor_provider_name"
+		   		+ ") values (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?,?, ?,?,?, ?,?,?,?)";
 		   jdbcTemplate.update(sql,  
 				   sensor.getSensorName(),
 				   sensor.getDeviceid(),
 				   sensor.getSensorStatus(),
+				   sensor.getSensorDesc(),
 				   sensor.getDeviceType(),
 				   sensor.getSensorType(),
+				   sensor.getSensorFrequency(),
 				   sensor.getSensorLatitude(),
 				   sensor.getSensorLongitude(),
 				   sensor.getSensorAddress(),
@@ -60,10 +66,12 @@ public class SensorDaoImpl implements ISensorDao{
 				   sensor.getSensorState(),
 				   sensor.getSensorCountry(),
 				   sensor.getSensorZip(),
+				   sensor.getSensorBlock(),
 				   sensor.getInstalledBy(),
 				   sensor.getInstallationDate(),
 				   sensor.getLastMaintainedBy(),
-				   sensor.getLastMaintainedDate()
+				   sensor.getLastMaintainedDate(),
+				   sensor.getSensorProviderName()
 				   );
 	}
 	
@@ -72,8 +80,7 @@ public class SensorDaoImpl implements ISensorDao{
 	 * @return List of sensors
 	 */
 	public List<Sensor> getAllSensors() {
-		   String sql = "SELECT *"
-		   		+ " FROM sensor";
+		   String sql = "SELECT * FROM sensor";
 		   RowMapper<Sensor> rowMapper = new SensorRowMapper();		
 		   return this.jdbcTemplate.query(sql, rowMapper);
 	}

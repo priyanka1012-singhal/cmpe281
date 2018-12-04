@@ -33,7 +33,7 @@
                       <form:input type="text" class="form-control"  path="nodeDesc" placeholder="Description"/>
                     </div>  
                     
-                   <!--   <div class="form-group">
+                     <div class="form-group">
                       <label>Status</label>
                        <form:select class="form-control" path="nodeStatus">
                       	<form:option  value="Turn On">Turn On</form:option>
@@ -42,7 +42,7 @@
                         <form:option  value="Inactive">Inactive</form:option>
                         <form:option  value="Maintenance">Maintenance</form:option>
                       </form:select>
-                    </div>  -->
+                    </div>  
                     
                     <div class="form-group">
                       <label>Address</label>

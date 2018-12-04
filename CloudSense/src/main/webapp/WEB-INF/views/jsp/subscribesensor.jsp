@@ -51,6 +51,7 @@
                   </table>
                 </div><!-- /.box-body -->
                 <div class="box-header">
+                <div class="box-body">
                 <h3 class="box-title">View On Map</h3>
                 </div><!-- /.box-header -->
                 <div class="maploc" id="showMap" style="width:500px;height:400px;"></div>
@@ -139,6 +140,7 @@ color: white;
 border-radius: 7px;
  font-family: Arial;
   font-weight:bold;
+  height: 40px;
 }
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}

@@ -64,7 +64,7 @@
         </div><!-- /.social-auth-links -->
 
         <a href="#">I forgot my password</a><br>
-        <a href="/CloudSense/register" class="text-center">Register a new membership</a>
+        <a href="${pageContext.request.contextPath}/register" class="text-center">Register a new membership</a>
 		<h3>${message}</h3>
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

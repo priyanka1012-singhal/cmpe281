@@ -44,11 +44,11 @@
 								<td>${cluster.installationDate}</td>	
 								<td> <button class="mapview" onclick="showMap(${cluster.clusterLongitude},${cluster.clusterLatitude})">View On Map</button></td>
 								<td>
-								<button class=edit onclick="window.open('/CloudSense/viewnodes/${cluster.id}', '_self'); openForm()">List Nodes</button>							
+								<button class=edit onclick="window.open('${pageContext.request.contextPath}/viewnodes/${cluster.id}', '_self'); openForm()">List Nodes</button>							
 								</td>
 								<td>
-								<button class="view" onclick="window.open('/CloudSense/searchnodes/${cluster.id}', '_self')">Add Smart Node</button>
-								<button class= "delete" onclick="window.open('/CloudSense/searchfordel/${cluster.id}', '_self')">Delete Smart Node</button>
+								<button class="view" onclick="window.open('${pageContext.request.contextPath}/searchnodes/${cluster.id}', '_self')">Add Smart Node</button>
+								<button class= "delete" onclick="window.open('${pageContext.request.contextPath}/searchfordel/${cluster.id}', '_self')">Delete Smart Node</button>
 								</td>							
 							</tr>
 						

@@ -47,8 +47,8 @@
 								<button class=edit onclick="window.open('${pageContext.request.contextPath}/viewsensors/${snode.id}', '_self'); openForm()">List Sensors</button>							
 								</td>
 								<td>
-								<button class="view" onclick="window.open('/CloudSense/searchsensor/${snode.id}', '_self')">Add Sensors</button>
-								<button class= "delete" onclick="window.open('/CloudSense/searchfordel/${snode.id}', '_self')">Delete Sensors</button>
+								<button class="view" onclick="window.open('${pageContext.request.contextPath}/searchsensor/${snode.id}', '_self')">Add Sensors</button>
+								<button class= "delete" onclick="window.open('${pageContext.request.contextPath}/searchfordel/${snode.id}', '_self')">Delete Sensors</button>
 								</td>							
 							</tr>
 						

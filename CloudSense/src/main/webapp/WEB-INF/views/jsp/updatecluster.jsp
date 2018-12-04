@@ -20,7 +20,7 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- form start -->
-                <form:form role="form" action="/CloudSense/cluster/update" method="post" modelAttribute="cluster">
+                <form:form role="form" action="${pageContext.request.contextPath}/cluster/update" method="post" modelAttribute="cluster">
                   <div class="box-body">
                   	<div class="form-group">
                       <label>Cluster Id</label>

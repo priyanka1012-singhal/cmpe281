@@ -5,12 +5,14 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import smartstreet.controller.AppController;
 import smartstreet.model.Login;
 import smartstreet.model.User;
 
@@ -19,12 +21,15 @@ import smartstreet.model.User;
 public class UserDaoImpl {
 	@Autowired
     private JdbcTemplate jdbcTemplate;
-	
+
+	private final static Logger logger = Logger.getLogger(AppController.class.getName());
 	/**
 	 * Add user
 	 * @param user
 	 */
 	public void addUser(User user) throws Exception{
+		
+		logger.info("2");
 		user.setJoiningDate(new Date());
 	   String sql = "INSERT INTO users (userid, first_name, last_name, username, password, "
 	   		+ "email, address, user_city, user_state, "

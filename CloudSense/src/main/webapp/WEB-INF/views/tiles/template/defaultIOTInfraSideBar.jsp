@@ -28,7 +28,7 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
-              <a href="${pageContext.request.contextPath}/">
+              <a href="${pageContext.request.contextPath}/iotdashboard">
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
               </a>
             </li>
