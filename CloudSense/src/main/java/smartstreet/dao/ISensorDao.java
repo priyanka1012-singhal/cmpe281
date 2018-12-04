@@ -2,7 +2,10 @@ package smartstreet.dao;
 
 import java.util.List;
 
+<<<<<<< HEAD
 import smartstreet.dto.Report;
+=======
+>>>>>>> d9fd95e1146dc59919542f846b6027333d9fbf49
 import org.springframework.jdbc.core.RowMapper;
 
 import smartstreet.dto.SensorRowMapper;
@@ -47,6 +50,7 @@ public interface ISensorDao {
 	 * @return
 	 */
 	boolean isExists(String sensorname);
+<<<<<<< HEAD
 	/**
 	 * Get List of sensors by street name
 	 * @param streetname
@@ -59,6 +63,8 @@ public interface ISensorDao {
 	List<Report> getreportbysensorstatus();
 
 	List<Report> getreportbyblockname();
+=======
+>>>>>>> d9fd95e1146dc59919542f846b6027333d9fbf49
 	
 	/**
 	 * Get Sensor by Id

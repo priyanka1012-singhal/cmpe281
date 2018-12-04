@@ -108,7 +108,6 @@ public class ClusterDaoImpl implements IClusterDao{
 	    		"XYZ", cluster.getLastMaintainedDate(),  cluster.getId());		
 		
 	}
-
 	@Override
 	public void deleteCluster(int clusterId) {
 		String sql = "DELETE FROM cluster_node WHERE cluster_id=?";

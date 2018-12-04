@@ -140,6 +140,7 @@ color: white;
 border-radius: 7px;
  font-family: Arial;
   font-weight:bold;
+  height: 40px;
 }
 body {font-family: Arial, Helvetica, sans-serif;}
 * {box-sizing: border-box;}

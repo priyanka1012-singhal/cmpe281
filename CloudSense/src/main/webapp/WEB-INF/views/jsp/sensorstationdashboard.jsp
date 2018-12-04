@@ -98,17 +98,7 @@
                 <div id="chartContainer1" style="height: 300px; width: 100%;"></div>		
             </div>
             </div>
-            
-           <div class="box box-primary">
-            <div class="box-header"> 
-            <i class="ion ion-clipboard"></i>             
-                 <h3 class="box-title">
-                    daily report  
-                  </h3>
-			<div id="chartContainer2" style="height: 370px; width: 100%;"></div>	
-            </div>
-            </div>            
-            
+           
             
               <!-- Custom tabs (Charts with tabs)-->
               <div class="nav-tabs-custom">
@@ -478,84 +468,7 @@ function initMap(sensorlocations, nodelocations, clusterlocations) {
    } else {
        return 0;
    }
-   
-   
-   var chart = new CanvasJS.Chart("chartContainer", {
-		animationEnabled: true,
-		title: {
-			text: "Sensor types/Count"
-		},
-		data: [{
-			type: "pie",
-			startAngle: 240,
-			
-			indexLabel: "{label} {y}",
-			dataPoints: [
-				{y: 6, label: "Temperature"},
-				{y: 1, label: "Humidity"},
-				{y: 1, label: "Pressure"},
-			]
-		}]
-	});
-	chart.render();
-	
-	   var chart = new CanvasJS.Chart("chartContainer1", {
-			animationEnabled: true,
-			title: {
-				text: "Sensor types/Count"
-			},
-			data: [{
-				type: "pie",
-				startAngle: 240,
-				
-				indexLabel: "{label} {y}",
-				dataPoints: [
-					{y: 7, label: "Active"},
-					{y: 2, label: "Inactive"},
-				]
-			}]
-		});
-		chart.render();
-		
-		 
-		var dataPoints = [];
-		 
-		var chart = new CanvasJS.Chart("chartContainer2", {
-			animationEnabled: true,
-			theme: "light2",
-		 	zoomEnabled: true,
-			title: {
-				text: "Total Biomass Energy Consumption"
-			},
-			axisY: {
-				title: "Biomass Consumption (in Trillion BTU)",
-				titleFontSize: 24,
-				includeZero: false
-			},
-			data: [{
-				type: "line",
-				yValueFormatString: "#,##0.0## Trillion BTU",
-				xValueType: "dateTime",
-				dataPoints: dataPoints
-			}]
-		});
-		 
-		function addData(data) {
-			for (var i = 0; i < data.length; i++) {
-				dataPoints.push({
-					x: data[i].timestamp,
-					y: data[i].value
-				});
-			}
-			chart.render();
-		}
-		 
-		$.getJSON("https://canvasjs.com/data/gallery/jsp/total-biomass-energy-consumption.json", addData);		
-		
-		
-		
 }
-
 
 
 </script>

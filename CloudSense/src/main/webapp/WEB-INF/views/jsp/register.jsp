@@ -33,7 +33,7 @@
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Register to CloudSense</p>
-        <form action="/CloudSense/adduser" method="POST">
+        <form action="${pageContext.request.contextPath}/adduser" method="POST">
           <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="First Name" name=firstName required/>
           </div>

@@ -32,12 +32,16 @@
           <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
             <li class="active treeview">
+<<<<<<< HEAD
                <c:if test="${principal.username == 'sensorprovider'}">
                	<a href="${pageContext.request.contextPath}/dashboard">
                </c:if>
                 <c:if test="${principal.username == 'iotmanager'}">
               		<a href="${pageContext.request.contextPath}/iotdashboard">
               	</c:if>	
+=======
+              <a href="${pageContext.request.contextPath}/iotdashboard">
+>>>>>>> d9fd95e1146dc59919542f846b6027333d9fbf49
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
               </a>
               

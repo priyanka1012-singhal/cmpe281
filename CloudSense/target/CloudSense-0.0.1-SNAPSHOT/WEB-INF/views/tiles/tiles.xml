@@ -3,91 +3,175 @@
  
 <tiles-definitions>  
   
-   <!-- Base Definition -->
-   <definition name="base-definition"
+   <!-- Base Definition for iot manager -->
+   <definition name="iot-base"
        template="/WEB-INF/views/jsp/defaultLayout.jsp">  
        <put-attribute name="title" value="" />  
-       <put-attribute name="header" value="" />  
-       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultSideBar.jsp" />  
+   	   <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />     
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultIOTInfraSideBar.jsp" /> 
        <put-attribute name="body" value="" />  
        <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
    </definition>  
   
    <!-- Iot Manager Dashboard Page -->
-   <definition name="iotmanagerdashboard" extends="base-definition">  
-       <put-attribute name="title" value="Dashboard" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
-       <put-attribute name="body" value="/WEB-INF/views/jsp/iotmanagerdashboard.jsp" />  
+   <definition name="iotmanagerdashboard" extends="iot-base">  
+       <put-attribute name="title" value="Dashboard" />       
+       	<put-attribute name="body" value="/WEB-INF/views/jsp/iotmanagerdashboard.jsp" />  
    </definition> 
    
     <!-- Add Sensor for IOT Manager -->
-   <definition name="addsensor" extends="base-definition">  
+   <definition name="addsensor" extends="iot-base">  
        <put-attribute name="title" value="Add Sensor" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/addsensor.jsp" />  
    </definition>  
    
     <!-- View Sensor for IOT Manager -->
-   <definition name="viewsensor" extends="base-definition">  
+   <definition name="viewsensor" extends="iot-base">  
        <put-attribute name="title" value="View Sensor" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/viewsensor.jsp" />  
+   </definition> 
+   
+      <!-- Update Sensor for IOT Manager -->
+   <definition name="updatesensor" extends="iot-base">  
+       <put-attribute name="title" value="Update Sensor" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/updatesensor.jsp" />  
    </definition>  
    
    <!-- Add Smart Node for IOT Manager -->
-   <definition name="addsmartnode" extends="base-definition">  
-       <put-attribute name="title" value="Add Smart Node" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+   <definition name="addsmartnode" extends="iot-base">  
+       <put-attribute name="title" value="Add Smart Node" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/addsmartnode.jsp" />  
    </definition>  
    
     <!-- View Smart Node for IOT Manager -->
-   <definition name="viewsmartnode" extends="base-definition">  
-       <put-attribute name="title" value="View Smart Node" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+   <definition name="viewsmartnode" extends="iot-base">  
+       <put-attribute name="title" value="View Smart Node" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/viewsmartnode.jsp" />  
    </definition>  
    
+    <!-- update Smart Node for IOT Manager -->
+   <definition name="updatesmartnode" extends="iot-base">  
+       <put-attribute name="title" value="View Smart Node" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/updatesmartnode.jsp" />  
+   </definition>  
+   
    <!-- Add Cluster for IOT Manager -->
-   <definition name="addcluster" extends="base-definition">  
-       <put-attribute name="title" value="Add Cluster" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+   <definition name="addcluster" extends="iot-base">  
+       <put-attribute name="title" value="Add Cluster" />    
        <put-attribute name="body" value="/WEB-INF/views/jsp/addcluster.jsp" />  
    </definition>  
    
     <!-- View Cluster for IOT Manager -->
-   <definition name="viewcluster" extends="base-definition">  
-       <put-attribute name="title" value="View Cluster" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+   <definition name="viewcluster" extends="iot-base">  
+       <put-attribute name="title" value="View Cluster" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/viewcluster.jsp" />  
+   </definition> 
+   
+   <!-- Update Cluster for IOT Manager -->
+   <definition name="updatecluster" extends="iot-base">  
+       <put-attribute name="title" value="View Cluster" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/updatecluster.jsp" />  
    </definition>  
    
       <!-- View Sensor Data for IOT Manager -->
-   <definition name="viewsensordata" extends="base-definition">  
+   <definition name="viewsensordata" extends="iot-base">  
        <put-attribute name="title" value="View Sensor data" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/viewsensordata.jsp" />  
+   </definition>
+   
+   <!-- View sensor info for IOT Manager -->
+   <definition name="viewsensorinfo" extends="iot-base">  
+       <put-attribute name="title" value="View Sensor info" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/viewsensorinfo.jsp" />  
+   </definition>
+   
+   <!-- view Cluster info for IOT Manager -->
+   <definition name="viewclusterinfo" extends="iot-base">  
+       <put-attribute name="title" value="View Cluster info" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/viewclusterinfo.jsp" />  
+   </definition>
+   
+   <!-- view smart node info for IOT Manager -->
+   <definition name="viewnoderinfo" extends="iot-base">  
+       <put-attribute name="title" value="View Node info" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/viewnoderinfo.jsp" />  
    </definition> 
    
    <!-- View Energy Usage Reports for IOT Manager -->
-   <definition name="viewenergyusagereports" extends="base-definition">  
-       <put-attribute name="title" value="View Sensor data" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+   <definition name="viewenergyusagereports" extends="iot-base">  
+       <put-attribute name="title" value="View Sensor data" />   
        <put-attribute name="body" value="/WEB-INF/views/jsp/viewenergyusagereports.jsp" />  
    </definition>
    
    <!-- View Energy Usage Reports for IOT Manager -->
-   <definition name="generatenergyusagereports" extends="base-definition">  
+   <definition name="generatenergyusagereports" extends="iot-base">  
        <put-attribute name="title" value="Generate Energy Usage Report" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
        <put-attribute name="body" value="/WEB-INF/views/jsp/generatenergyusagereports.jsp" />  
    </definition>  
    
+    <!-- Sign in page -->
+   <definition name="signin"  template="/WEB-INF/views/jsp/signin.jsp">  
+       <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="menu" value="" />  
+       <put-attribute name="footer" value="" />  
+   </definition> 
+   
+   <!-- Sign out page -->
+   <definition name="register"  template="/WEB-INF/views/jsp/register.jsp">  
+       <put-attribute name="title" value="" />  
+        <put-attribute name="header" value="" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="menu" value="" />  
+       <put-attribute name="footer" value="" />  
+   </definition>    
+   
+   <!-- Base Definition for sensor station -->
+   <definition name="sensor-base"
+       template="/WEB-INF/views/jsp/defaultLayout.jsp">  
+       <put-attribute name="title" value="" />  
+   	   <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultSensorStationHeader.jsp" /> 
+       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/defaultSensorStationSideBar.jsp" />  
+       <put-attribute name="body" value="" />  
+       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/defaultFooter.jsp" />  
+   </definition>  
+   
    <!-- Sensor Station Dashboard Page -->
-   <definition name="sensorstationdashboard" extends="base-definition">  
+   <definition name="sensorstationdashboard" extends="sensor-base">  
        <put-attribute name="title" value="Dashboard" />  
-        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultSensorStationHeader.jsp" />  
-       <put-attribute name="body" value="/WEB-INF/views/jsp/sensorstationdashboard.jsp" />  
+       	<put-attribute name="body" value="/WEB-INF/views/jsp/sensorstationdashboard.jsp" />  
    </definition>
- 
+   
+    <definition name="ibecluster" extends="sensor-base">  
+       <put-attribute name="title" value="Subscribe Cluster" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/subscribecluster.jsp" />  
+   </definition>
+   
+    <!-- nodes with sensor page  sensor provider -->
+   <definition name="nodeswithsensor" extends="sensor-base">  
+       <put-attribute name="title" value="Edit Sensor" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/nodeswithsensor.jsp" /> 
+   </definition>   
+     <!-- nodes with sensor page  sensor provider -->
+   <definition name="subscribe" extends="sensor-base">  
+       <put-attribute name="title" value="Subscribe Sensor" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/subscribe.jsp" /> 
+   </definition> 
+    <!-- subscribe Nodes for Sensor provider -->
+   <definition name="subscribesmartnode" extends="sensor-base">  
+       <put-attribute name="title" value="Subscribe Node" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/subscribesmartnode.jsp" />  
+   </definition>
+ 	<!-- Subscribe Sensor for Sensor provider -->
+   <definition name="subscribesensor" extends="sensor-base">  
+       <put-attribute name="title" value="Subscribe Sensor" />   
+       <put-attribute name="body" value="/WEB-INF/views/jsp/subscribesensor.jsp" />  
+   </definition> 
+      <!-- add sensor to Nodes for Sensor provider -->
+   <definition name="addsensortonode" extends="base-definition">  
+       <put-attribute name="title" value="Subscribe Node" />  
+        <put-attribute name="header" value="/WEB-INF/views/tiles/template/defaultIotHeader.jsp" />  
+       <put-attribute name="body" value="/WEB-INF/views/jsp/addsensortonode.jsp" />  
+   </definition>  
 </tiles-definitions>
