@@ -307,13 +307,7 @@ public class AppController {
     	clusterDao.addCluster(cluster);
         return new ModelAndView("redirect:addcluster/");     
     }
-    @RequestMapping(value = { "/viewcluster"}, method = RequestMethod.GET)
-    public ModelAndView viewcluster(ModelAndView model) {
-		List<Cluster> clusterList = clusterDao.getAllClusters();
-		model.addObject("clusterList", clusterList);
-		model.setViewName("viewcluster");
-		return model;
-    }
+    
 	@RequestMapping(value = { "/subscribecluster"}, method = RequestMethod.GET)
     public ModelAndView subscribeCluster(ModelAndView model) {
 		List<Cluster> clusterList = clusterDao.getAllClusters();	
@@ -338,18 +332,6 @@ public class AppController {
     	
     } 
 
-    
-    @RequestMapping(value="/updatecluster",method = RequestMethod.POST)  
-    public ModelAndView updateCluster( @ModelAttribute("cluster") Cluster cluster){ 
-    	cluster.setId(editClusterId);
-    	clusterDao.updateCluster(cluster);
-        return new ModelAndView("redirect:/viewcluster");  
-    } 
-	@RequestMapping(value = "/deletecluster/{id}", method = RequestMethod.GET)
-    public String deleteCluster(@PathVariable("id") int clusterId){	
-        this.clusterDao.deleteCluster(clusterId);
-        return "redirect:/viewcluster";
-    }    
     
     //Deekshitha's changes
     @RequestMapping(value = { "/userdashboard"}, method = RequestMethod.GET)
