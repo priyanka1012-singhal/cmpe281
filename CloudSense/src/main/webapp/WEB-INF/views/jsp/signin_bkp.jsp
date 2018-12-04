@@ -30,17 +30,17 @@
   <body class="login-page">
     <div class="login-box">
       <div class="login-logo">
-        <a href="/index2.html"><b>SignIn</b> to </a><b>CloudSense</b>
+        <a href="#"><b>SignIn</b> to </a><b>CloudSense</b>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
-        <form action="/CloudSense/login" method="POST">
+        <form action="login" method="POST">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Email" name= email required/>
+            <input type="text" class="form-control" name='username' placeholder="Username" required/>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name= userPwd required/>
+            <input type="password" class="form-control" placeholder="Password" name='password' required/>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
@@ -52,9 +52,13 @@
               </div>                        
             </div><!-- /.col -->
             <div class="col-xs-4">
-              <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+              <button type="submit" value="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
             </div><!-- /.col -->
+            <c:if test="${not empty errorMessge}">
+				<div style="color: red; font-weight: bold; margin: 30px 0px;">${errorMessge}</div>
+			</c:if>
           </div>
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
         </form>
 
         <div class="social-auth-links text-center">
@@ -64,7 +68,7 @@
         </div><!-- /.social-auth-links -->
 
         <a href="#">I forgot my password</a><br>
-        <a href="/CloudSense/register" class="text-center">Register a new membership</a>
+        <a href="register" class="text-center">Register a new membership</a>
 		<h3>${message}</h3>
       </div><!-- /.login-box-body -->
     </div><!-- /.login-box -->

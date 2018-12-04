@@ -1,10 +1,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="com.mongodb.*" %>
-<%@page import="java.util.*" %>
+<%@page import="java.util.*, java.text.SimpleDateFormat" %>
 <%@page import="com.google.gson.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page import="smartstreet.reports.ReportingCharts" %>
+
 <%
 
 		MongoClientURI uri = new MongoClientURI(
@@ -15,72 +16,34 @@
         DB db = mongoClient.getDB( "iotcluster" );
         //System.out.println("Connected to database successfully");
       
-        //to store the label values from the database
-        ArrayList labelValue = new ArrayList();
-        //to store the data values of first series from the database
-        ArrayList<String> dataValue1 = new ArrayList<String>();
-        //to store the data values pf second series from the database
-        ArrayList<String> dataValue2 = new ArrayList<String>();
-        // to store the categories from the database
-        ArrayList category = new ArrayList();
+        HashMap<String,String> labelValue = new HashMap<String,String>();
         //fetching the collection from the database  
-        DBCollection collection = db.getCollection("sensordata");
+       DBCollection collection = db.getCollection("sensordata");
+       String pattern1 = "YYYY-MMM";
+       String pattern2 = "YYYY";
+       SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern1);
+       BasicDBObject fields = new BasicDBObject();
+   		//fields.put("Street Name", "Oak Street");
+   		//fields.put("Block Name", "Oak and South Street");
+
+
+   		//fields.put("Measurement Timestamp", BasicDBObjectBuilder.start("$gte", simpleDateFormat.parse("2016")).add("$lte", simpleDateFormat.parse("2018")).get());
         //Selects the documents in a collection and returns a cursor to the selected documents
-        DBCursor cursor = collection.find().limit(20);
+        DBCursor cursor = collection.find(fields).limit(20000);
+   		simpleDateFormat = new SimpleDateFormat(pattern1);
+  
          while(cursor.hasNext()) {
              DBObject o = cursor.next();
-             String labeldata = (String) o.get("Block Name"); 
-               //fetching the value
-               String value1 = (String) o.get("Battery Life");
-               //String value2 = (String) o.get("Measurement Timestamp");
-               labelValue.add(labeldata);
-               // insert into array list
-               dataValue1.add(value1);
-               //dataValue2.add(value2);
-              //inserting the labels into the category 
-               category.add(labelValue);
-               
-              
+             Date label = (Date) o.get("Measurement Timestamp") ; 
+             //label = simpleDateFormat.format(label);
+             String value = ((String) o.get("Battery Life"));
+           	labelValue.put(simpleDateFormat.format(label), value);
                
          }
-         /*
-         labelValue.add("Nov 2017");
-       //inserting the labels into the category 
-         category.add(labelValue);
-         labelValue.add("Dec 2017");
-       //inserting the labels into the category 
-         category.add(labelValue);
-         labelValue.add("Jan 2018");
-       //inserting the labels into the category 
-         category.add(labelValue);
-         /*labelValue.add("Feb 2018");
-         labelValue.add("March 2018");
-         labelValue.add("April 2018");
-         labelValue.add("May 2018");
-         labelValue.add("June 2018");
-         labelValue.add("Aug 2018");
-         labelValue.add("Sep 2018");
-         labelValue.add("Oct 2018");
-         labelValue.add("Nov 2018");*/
-         /*dataValue1.add("6300");
-         dataValue1.add("5374");
-         dataValue1.add("3849");
-         dataValue1.add("3453");
-         dataValue1.add("2748");
-         dataValue1.add("5473");
-         dataValue1.add("6839");
-         dataValue1.add("63843");
-         dataValue1.add("5438");
-         dataValue1.add("4564");
-         dataValue1.add("7635");
-         dataValue1.add("6739");
-         dataValue1.add("5678");*/
           
     %>
     
-    
-   
-      <div class="content-wrapper">
+		<div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
@@ -102,126 +65,74 @@
          	</div>
 		</section><!-- /.content -->
       	</div><!-- /.content-wrapper -->
-		<script src='<c:url value="fusioncharts.js" />'></script>
-        
-        
-        
+
+ 
+        <script src='<c:url value="fusioncharts.js"  />'></script>
+        <script src='<c:url value="fusioncharts.theme.fint.js"  />'></script>
+        <script src='<c:url value="fusioncharts.charts.js"  />'></script>
+
         <%
-        
-    
+         
             Gson gson = new Gson();
+        // The 'chartobj' map object holds the chart attributes and data.
+        Map<String, String> chartobj = new HashMap<String, String>();//for getting key value pair
             
-            
-          
-            // The 'chartobj' map object holds the chart attributes and data.
-            Map<String, String> chartobj = new HashMap<String, String>();//for getting key value pair
-            
-            chartobj.put("caption", "Energy Usage from year 2017-2018");
-            chartobj.put("subCaption", "Oak Street");
-            chartobj.put("captionFontSize", "14");
-            chartobj.put("subcaptionFontSize", "14");
-            chartobj.put("subcaptionFontBold", "0");
-            chartobj.put("paletteColors", "#0075c2,#1aaf5d");
-            chartobj.put("bgcolor", "#ffffff");
-            chartobj.put("showBorder", "0");
-            chartobj.put("showShadow", "0");
-            chartobj.put("animation","0");
-            chartobj.put("showCanvasBorder", "0");
-            chartobj.put("usePlotGradientColor", "0");
-            chartobj.put("legendBorderAlpha", "0");
-            chartobj.put("legendShadow", "0");
-            chartobj.put("showAxisLines", "0");
-            chartobj.put("showAlternateHGridColor", "0");
-            chartobj.put("divlineThickness", "1");
-            chartobj.put("divLineDashed", "1");
-            chartobj.put("divLineDashLen", "1");
-            chartobj.put("divLineGapLen", "1");
-            chartobj.put("xAxisName", "Day");
-            chartobj.put("showValues", "0");
-            
-           //the categories object
-           ArrayList categories= new ArrayList();
-           
-           ArrayList arrData = new ArrayList();
-            
-            for(int i=0;i<labelValue.toArray().length;i++)
-                
+            // The &apos;chartobj&apos; map object holds the chart attributes and data.
+            chartobj.put("caption", "Battery Life of sensors");
+            //chartobj.put("subCaption" , "Last year");
+            chartobj.put("paletteColors" , "#0075c2");
+            chartobj.put("bgColor" , "#ffffff");
+            chartobj.put("showBorder" , "0");
+            chartobj.put("theme","fint");
+            chartobj.put("showPercentValues" , "1");
+            chartobj.put("decimals" , "1");
+            chartobj.put("captionFontSize" , "14");
+            chartobj.put("subcaptionFontSize" , "14");
+            chartobj.put("subcaptionFontBold" , "0");
+            chartobj.put("toolTipColor" , "#ffffff");
+            chartobj.put( "toolTipBorderThickness" , "0");
+            chartobj.put("toolTipBgColor" , "#000000");
+            chartobj.put("toolTipBgAlpha" , "80");
+            chartobj.put("toolTipBorderRadius" , "2");
+            chartobj.put("toolTipPadding" , "5");
+            chartobj.put("showHoverEffect" , "1");
+            chartobj.put("yAxisName", "Battery Life");
+         
+           // to store the entire data object
+            ArrayList arrData = new ArrayList();
+            for(Map.Entry m:labelValue.entrySet()) 
             {
+                // to store the key value pairs of label and value object of the data object
                 Map<String, String> lv = new HashMap<String, String>();
-                lv.put("label", labelValue.toArray()[i].toString() );
+                lv.put("label", m.getKey().toString() );
+                lv.put("value", m.getValue().toString());
                 arrData.add(lv);             
             }
-         
-            Map<String, ArrayList> innercategory = new HashMap<String, ArrayList>(); 
-            innercategory.put("category",arrData);
-            categories.add(innercategory);
-           
-            ArrayList dataset = new ArrayList();
-            //For first data series
-            Map<String, String> ds1 = new HashMap<String, String>();
-            //For second dataseries
-            Map<String,String> ds2 = new HashMap<String,String>(); 
-            
-            ds1.put("seriesname","Bakersfield Central");
-            
-           
-            
-             ArrayList data1= new ArrayList();
-             for(String value1: dataValue1)
-                {
-                Map<String, String> dv1 = new HashMap<String, String>();
-               
-                dv1.put("value", value1 );
-               
-               data1.add(dv1); 
-               
-              // dataset.add(data);
-            }
-             ds1.put("data", gson.toJson(data1));
-             
-              ds2.put("seriesname","Los Angeles Topanga");
-             
-             ArrayList data2= new ArrayList();
-           
-            for(String value2: dataValue2)
-                {
-                Map<String, String> dv2 = new HashMap<String, String>();
-               
-                dv2.put("value", value2 );
-               
-               data2.add(dv2);
-                }
-            ds2.put("data",gson.toJson(data2));
-            dataset.add(ds1);
-            dataset.add(ds2);
-             
-            
+            //close the connection.
             //cursor.close();
-            //create 'dataMap' map object to make a complete FusionCharts datasource.
+ 
+            //create &apos;dataMap&apos; map object to make a complete FC datasource.
              Map<String, String> dataMap = new LinkedHashMap<String, String>();  
-      
-             dataMap.put("chart", gson.toJson(chartobj));
-             dataMap.put("categories", gson.toJson(categories));
-             dataMap.put("dataset", gson.toJson(dataset)); 
-             //dataMap.put("data", gson.toJson(datasetseriesname)); 
+        /*
+            gson.toJson() the data to retrieve the string containing the
+            JSON representation of the data in the array.
+        */
+         dataMap.put("chart", gson.toJson(chartobj));
+         dataMap.put("data", gson.toJson(arrData));
 
-            ReportingCharts mslineChart= new ReportingCharts(
-            "msline",// chartType
-                        "chart1",// chartId
+         ReportingCharts columnChart= new ReportingCharts(
+            "line",// chartType
+                        "chart2",// chartId
                         "600","400",// chartWidth, chartHeight
                         "chart",// chartContainer
                         "json",// dataFormat
                         gson.toJson(dataMap) //dataSource
                     );
-           
             %>
             
-            
-            
-            
 <!--    Step 5: Render the chart    -->                
-            
-        <%= mslineChart.render() %>
+            <%=columnChart.render()%>
+
+ 
+ 
       
-
-
