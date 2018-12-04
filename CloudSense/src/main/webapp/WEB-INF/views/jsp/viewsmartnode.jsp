@@ -40,7 +40,7 @@
 						<td><c:out value="${data.nodeName}" /></td>
 						<td><c:out value="${data.nodeDesc}" /></td>
 						<td align="center"><a href="${pageContext.request.contextPath}/viewsmartnode/node/${data.id}/getmappedsensors" ><c:out value="${data.sensorIdCount}" /></a></td>
-						<td><button class="mapview" onclick="document.getElementById('map').style.height = '400px';document.getElementById('map').style.width = '100%';showMap(${data.id})"><i class="fa fa-map-marker" style="font-size:30px;color:red"></i></button></td>
+						<td><button class="mapview" onclick="document.getElementById('map').style.height = '400px';document.getElementById('map').style.width = '100%';showMap(${data.id}, ${data.nodeLatitude}, ${data.nodeLongitude})"><i class="fa fa-map-marker" style="font-size:30px;color:red"></i></button></td>
 						
 						<td>
 						<c:choose>
@@ -161,7 +161,7 @@
     	
     }
     
-    function initMap(sensorlocations, nodelocations, clusterlocations) {
+    function initMap(sensorlocations, nodelocations, clusterlocations, lat, lon) {
     	
     	 var iconBase = 'http://maps.google.com/mapfiles/ms/icons/';
          var icons = {
@@ -186,12 +186,12 @@
                   });
         	}
         	
-        	for (i = 0; i < nodelocations.length; i++) { 
+        	//for (i = 0; i < nodelocations.length; i++) { 
         		features.push(  {
-                    position: new google.maps.LatLng(nodelocations[i][0], nodelocations[i][1]),
+                    position: new google.maps.LatLng(lat, lon),
                     type: 'smartnode'
                   });
-        	}
+        	//}
         	
         	for (i = 0; i < clusterlocations.length; i++) { 
         		features.push(  {
@@ -271,7 +271,7 @@
 
  }*/
 
-function showMap(id) {
+function showMap(id, lat, lon) {
 	
 /* 	  var mapLatLng = {lat:Number(latitude), lng: Number(longitude)};
 	alert(Number(latitude));
@@ -292,11 +292,10 @@ function showMap(id) {
 			    var sensorMapInput = [];
 			    var nodeMapInput = [];
 			    var clusterMapInput = [];
-				
 				$.each(result, function(i, val) {
 					sensorMapInput[i] = [parseFloat(val.sensorLatitude), parseFloat(val.sensorLongitude)];
 				}); 
-				initMap(sensorMapInput,nodeMapInput,clusterMapInput);
+				initMap(sensorMapInput,nodeMapInput,clusterMapInput,lat,lon);
 				console.log("Success: ", sensorMapInput);
 				
 		},

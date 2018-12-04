@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import smartstreet.controller.SensorController;
 import smartstreet.dao.ISensorDao;
 import smartstreet.dto.Report;
 import smartstreet.model.Sensor;
@@ -68,7 +67,7 @@ public class SensorServiceImpl implements ISensorService{
 	 * @param sensorId
 	 * @return
 	 */
-	public Sensor getSensorById(String sensorId) {
+	public Sensor getSensorById(int sensorId) {
 		return sensorDao.getSensorById(sensorId);
 	} 
 	
@@ -84,7 +83,8 @@ public class SensorServiceImpl implements ISensorService{
 	 * Delete sensor
 	 * @param sensor
 	 */
-	public void deleteSensor(String sensorId) {
+	public void deleteSensor(int sensorId) {
+		sensorDao.deleteMapping(sensorId);
 		sensorDao.deleteSensor(sensorId);
 	}
 	

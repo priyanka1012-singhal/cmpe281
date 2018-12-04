@@ -17,7 +17,7 @@
     <![endif]-->
 </head>
 
-<body onload='document.loginForm.username.focus();'>
+<body>
 <div class="container">
  <div>
       <div >

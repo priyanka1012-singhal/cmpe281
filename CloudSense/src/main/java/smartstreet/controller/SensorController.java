@@ -31,7 +31,7 @@ public class SensorController {
 	private final static Logger logger = Logger.getLogger(SensorController.class.getName());
 	
 	@GetMapping("/sensor/{id}")
-	public ModelAndView getSensorById(@PathVariable("id") String id) {
+	public ModelAndView getSensorById(@PathVariable("id") int id) {
 		Sensor sensor= sensorService.getSensorById(id);
 		return new ModelAndView("viewsensorinfo", "sensor",sensor);
 	}
@@ -64,7 +64,7 @@ public class SensorController {
 	}*/
 	
 	@GetMapping("/sensor/{id}/delete")
-	public ModelAndView deleteSensor(@PathVariable("id") String id) {
+	public ModelAndView deleteSensor(@PathVariable("id") int id) {
 		logger.info("Enter deleteSensor");
 		sensorService.deleteSensor(id);
 		List<Sensor> sensorList = sensorService.getAllSensors();

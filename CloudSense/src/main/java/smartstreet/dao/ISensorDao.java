@@ -24,12 +24,6 @@ public interface ISensorDao {
 	 */
 	public List<Sensor> getAllSensors() ;
 	
-	/**
-	 * Get Sensor by Id
-	 * @param sensorId
-	 * @return
-	 */
-	public Sensor getSensorById(String sensorId);
 	
 	/**
 	 * Update sensor
@@ -41,7 +35,7 @@ public interface ISensorDao {
 	 * Delete sensor
 	 * @param sensor
 	 */
-	public void deleteSensor(String sensorId);
+	public void deleteSensor(int sensorId);
 
 	/**
 	 * Checks if the sensor with same name exists or not
@@ -74,4 +68,6 @@ public interface ISensorDao {
 	public void updateNodeForSensor(String[]sensorList , int nodeId);
 	public  List<Sensor> getSensorsForNode(int sNodeId);
 	public void deleteNodeForSensor(String[]sensorList , int nodeId);
+
+	void deleteMapping(int sensorId);
 }

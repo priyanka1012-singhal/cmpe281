@@ -119,18 +119,6 @@ public class SensorDaoImpl implements ISensorDao{
 	
 	
 	/**
-	 * Get Sensor by Id
-	 * @param sensorId
-	 * @return
-	 */
-	public Sensor getSensorById(String sensorId) {
-		String sql = "SELECT * FROM sensor WHERE sensor_id = ?";
-		RowMapper<Sensor> rowMapper = new SensorRowMapper();		
-		Sensor article = jdbcTemplate.queryForObject(sql, rowMapper, sensorId);
-		return article;
-	} 
-	
-	/**
 	 * Update sensor
 	 * @param sensor
 	 */
@@ -165,8 +153,16 @@ public class SensorDaoImpl implements ISensorDao{
 	 * Delete sensor
 	 * @param sensor
 	 */
-	public void deleteSensor(String sensorId) {
+	public void deleteSensor(int sensorId) {
 		String sql = "DELETE FROM sensor WHERE sensor_id=?";
+	
+		jdbcTemplate.update(sql, sensorId);
+		
+		
+	}
+	
+	public void deleteMapping(int sensorId) {
+		String sql = "DELETE FROM node_sensor_mapping WHERE sensor_id=?";
 		jdbcTemplate.update(sql, sensorId);
 	}
 	

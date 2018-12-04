@@ -21,13 +21,6 @@ public interface ISensorService {
 	public List<Sensor> getAllSensors() ;
 	
 	/**
-	 * Get Sensor by Id
-	 * @param sensorId
-	 * @return
-	 */
-	public Sensor getSensorById(String sensorId);
-	
-	/**
 	 * Update sensor
 	 * @param sensor
 	 */
@@ -37,7 +30,7 @@ public interface ISensorService {
 	 * Delete sensor
 	 * @param sensor
 	 */
-	public void deleteSensor(String sensorId);
+	public void deleteSensor(int sensorId);
 	/**
 	 * Get List of sensors by street name
 	 * @param streetname
@@ -50,6 +43,8 @@ public interface ISensorService {
 	public List<Report> getreportbyblockname();
 
 	public List<Report> getreportbysensorstatus();
+
+	public Sensor getSensorById(int sensorId);
 	
 
 }

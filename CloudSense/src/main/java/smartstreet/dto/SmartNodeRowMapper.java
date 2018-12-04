@@ -25,6 +25,7 @@ public class SmartNodeRowMapper implements RowMapper<SmartNode> {
 		node.setNodeName(row.getString("node_name"));
 		node.setNodeStatus(row.getString("node_status"));
 		node.setNodeLatitude(row.getString("node_latitude"));
+		node.setNodeDesc(row.getString("node_desc"));
 		node.setNodeLongitude(row.getString("node_longitude"));
 		node.setInstallationDate(row.getDate("installation_date"));
 		node.setLastMaintainedDate(row.getDate("last_maintained_date"));
