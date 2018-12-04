@@ -34,7 +34,8 @@ public class ClusterDaoImpl implements IClusterDao{
 		String sql = "INSERT INTO cluster_node ("
 				+ "cluster_name, "
 		   		+ "cluster_status,"
-		   		+ "cluster_latitude,"
+		   		+ "cluster_desc,"
+		   		+ "cluster_latitude,"	   		
 		   		+ "cluster_longitude,"
 		   		+ "cluster_address,"
 		   		+ "cluster_city,"
@@ -44,10 +45,11 @@ public class ClusterDaoImpl implements IClusterDao{
 		   		+ "installation_date,"
 		   		+ "last_maintained_by,"
 		   		+ "last_maintained_date"
-		   		+ ") values (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?)";
+		   		+ ") values (?, ?, ?,?, ?, ?,?, ?, ?,?, ?, ?, ?)";
 		   jdbcTemplate.update(sql,  
 				   cluster.getClusterName(),
 				   cluster.getClusterStatus(),
+				   cluster.getClusterDesc(),
 				   cluster.getClusterLatitude(),
 				   cluster.getClusterLongitude(),
 				   cluster.getClusterAddress(),
