@@ -56,7 +56,7 @@
 						<td><c:out value="${data.lastMaintainedDate}" /></td>
 						
 						<td> <button class="view" id="addsensor" onclick="ajaxGet(${data.id})">Add Sensor</button> <button class="edit"  onclick="window.open('${pageContext.request.contextPath}/editnode/${data.id}', '_self')">Edit</button>
-								<button class= "delete" onclick="ajaxDelete(${data.id})">Delete</button> </td>
+					<button class= "delete" onclick="ajaxDelete(${data.id})">Delete</button> </td>
 						</tr>
 					</c:forEach>
                       </tbody>

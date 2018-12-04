@@ -20,12 +20,8 @@
               <!-- general form elements -->
               <div class="box box-primary">
                 <!-- form start -->
-                <form:form role="form" action="${pageContext.request.contextPath}/sensor/update" method="POST" modelAttribute="sensor">
+                 <form:form role="form" action="${pageContext.request.contextPath}/editsave/" method="POST" modelAttribute="sensor">
                   <div class="box-body">
-                  <div class="form-group">
-                      <label>Sensor Id</label>
-                      <form:input class="form-control" path="id"/>
-                    </div>
                      <!-- text input -->
                     <div class="form-group">
                       <label>Sensor Name</label>

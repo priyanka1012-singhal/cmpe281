@@ -281,5 +281,19 @@ public class AppController {
     	sensorDao.deleteNodeForSensor(checkboxValue, editnodeId);
 		return new ModelAndView("redirect:/subscribesmartnode");
     	
-    }    
+    }   
+    //edit sensor page
+    @RequestMapping(value="/editsensor/{id}",  method = RequestMethod.GET)  
+    public ModelAndView edit(@PathVariable int id){  
+    	editSensorId = id;
+        return new ModelAndView("updatesensor","sensor",this.sensorDao.getSensorById(id) );  
+    } 
+    //update sensor data
+    @RequestMapping(value="/editsave/",method = RequestMethod.POST)  
+    public ModelAndView editsave( @ModelAttribute("sensor") Sensor sensor){ 
+    	sensor.setId(editSensorId);
+    	sensorDao.updateSensor(sensor);  
+        return new ModelAndView("redirect:/viewsensor");  
+    }     
+    
 }
