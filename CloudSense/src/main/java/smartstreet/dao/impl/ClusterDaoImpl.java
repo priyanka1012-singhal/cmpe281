@@ -155,6 +155,7 @@ public class ClusterDaoImpl implements IClusterDao{
 		 String sql = "SELECT map.node_id, node.node_name, "
 			   		+ "node.node_status,"
 			   		+ "node.node_latitude,"
+			   		+ "node.node_desc,"
 			   		+ "node.node_longitude,"
 			   		+ "node.node_address,"
 			   		+ "node.node_city,"
