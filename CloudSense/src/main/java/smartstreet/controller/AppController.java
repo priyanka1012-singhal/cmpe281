@@ -337,14 +337,7 @@ public class AppController {
 		return new ModelAndView("redirect:/subscribecluster");
     	
     } 
-    @RequestMapping(value="/editcluster/{id}",  method = RequestMethod.GET)  
-    public ModelAndView editClusterPage(@PathVariable("id") int clusterId){ 
-    	editClusterId = clusterId;
-    	ModelAndView moView = new ModelAndView();
-    	moView.addObject("cluster",  this.clusterDao.getClusterById(clusterId));
-    	moView.setViewName("editcluster");
-		return moView;      
-    } 
+
     
     @RequestMapping(value="/updatecluster",method = RequestMethod.POST)  
     public ModelAndView updateCluster( @ModelAttribute("cluster") Cluster cluster){ 
