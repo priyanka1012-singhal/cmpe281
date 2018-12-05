@@ -39,7 +39,9 @@
                 <c:if test="${principal.username == 'iotmanager'}">
               		<a href="${pageContext.request.contextPath}/iotdashboard">
               	</c:if>	
-              <a href="${pageContext.request.contextPath}/iotdashboard">
+              	 <c:if test="${principal.username == 'user'}">
+              		<a href="${pageContext.request.contextPath}/iotdashboard">
+              	</c:if>	
                 <i class="fa fa-dashboard"></i> <span>Dashboard</span>
               </a>
               
@@ -51,6 +53,9 @@
               </a>
             </li>
             </c:if>
+            
+            
+             <c:if test="${principal.username != 'user'}">
              <li class="treeview">
               <a href="#">
                 <i class="fa fa-lightbulb-o"></i> <span>Manage Sensor</span> <i class="fa fa-angle-left pull-right"></i>
@@ -107,7 +112,11 @@
               			<li><a href="${pageContext.request.contextPath}/sensordata/view"><i class="fa fa-circle-o"></i>View Sensor Data</a></li>
               		</ul>
               	</c:if>
+              	
+              	<c:if test="${principal.username == 'user'}">
+              	</c:if>
            </li>
+           </c:if>
           </ul>
         </section>
         <!-- /.sidebar -->
