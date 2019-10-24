@@ -23,14 +23,13 @@
                   <table id="example2" class="table table-bordered table-hover">
                     <thead>
                       <tr>
-                        <th>Node Name</th>
-                        <th>Node Description</th>      
+                        <th>Node Name</th>    
                         <th>No of Sensors</th>
                         <th>View on Map</th> 
                         <th>Status</th> 
                         <th>Node Address</th>  
                         <th>Installation Date</th>
-                        <th>Last Maintenance Date</th>
+   
                         <th>Actions</th>
                       </tr>
                     </thead>
@@ -38,7 +37,6 @@
                       <c:forEach items="${nodeList}" var="data">
 						<tr class="back">
 						<td><c:out value="${data.nodeName}" /></td>
-						<td><c:out value="${data.nodeDesc}" /></td>
 						<td align="center"><a href="${pageContext.request.contextPath}/viewsmartnode/node/${data.id}/getmappedsensors" ><c:out value="${data.sensorIdCount}" /></a></td>
 						<td><button class="mapview" onclick="document.getElementById('map').style.height = '400px';document.getElementById('map').style.width = '100%';showMap(${data.id}, ${data.nodeLatitude}, ${data.nodeLongitude})"><i class="fa fa-map-marker" style="font-size:30px;color:red"></i></button></td>
 						
@@ -53,9 +51,9 @@
 						</td>
 						<td><c:out value="${data.nodeAddress}" /></td>
 						<td><c:out value="${data.installationDate}" /></td>
-						<td><c:out value="${data.lastMaintainedDate}" /></td>
 						
-						<td> <button class="view" id="addsensor" onclick="ajaxGet(${data.id})">Add Sensor</button> <button class="edit"  onclick="window.open('${pageContext.request.contextPath}/editnode/${data.id}', '_self')">Edit</button>
+						
+						<td> <button class="view" id="addsensor" onclick="ajaxGet(${data.id})">	Add Sensor</button> <button class="edit"  onclick="window.open('${pageContext.request.contextPath}/editnode/${data.id}', '_self')">Edit</button>
 					<button class= "delete" onclick="ajaxDelete(${data.id})">Delete</button> </td>
 						</tr>
 					</c:forEach>
@@ -352,7 +350,7 @@ height: 100%;
 background-color: red;
 color: white;
 border-radius: 7px;
-width: 25%;
+width: 27%;
 height: 100%;
 font-family: Arial;
 font-weight:bold;
